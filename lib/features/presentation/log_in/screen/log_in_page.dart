@@ -62,14 +62,21 @@ class _LogInPageState extends State<LogInPage> {
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
                             Checkbox(
-                            materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                            value: state.isSaveInfo,
-                            activeColor: Colors.blueAccent,
-                            onChanged: (bool? value) {
-                              cubit.isSaveInfo(value);
-                            },
-                          ),
-                            Text("Giữ tôi luôn đăng nhập", style: TextStyle(fontSize: 14, color: Colors.grey),),
+                              materialTapTargetSize:
+                                  MaterialTapTargetSize.shrinkWrap,
+                              value: state.isSaveInfo,
+                              activeColor: Colors.blueAccent,
+                              onChanged: (bool? value) {
+                                cubit.isSaveInfo(value);
+                              },
+                            ),
+                            Text(
+                              "Giữ tôi luôn đăng nhập",
+                              style: TextStyle(
+                                fontSize: 14,
+                                color: Colors.grey,
+                              ),
+                            ),
                           ],
                         ),
                         InkWell(
@@ -99,14 +106,20 @@ class _LogInPageState extends State<LogInPage> {
                         borderRadius: BorderRadius.circular(15),
                       ),
                       child: TextButton(
-                          onPressed: () {
-                            print("r12");
-                            if(nameKey.currentState!.validate()) {
-                              print("object");
-                              nameKey.currentState!.save();
-                            }
-                          }, child: Text("ĐĂNG NHẬP", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),)),
-                    )
+                        onPressed: () {
+                          if (nameKey.currentState!.validate()) {
+                            nameKey.currentState!.save();
+                          }
+                        },
+                        child: Text(
+                          "ĐĂNG NHẬP",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ),
                   ],
                 ),
               ),

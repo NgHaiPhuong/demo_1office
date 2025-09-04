@@ -32,7 +32,7 @@ class CustomTextField {
             : IconButton(
           icon: isVisibily
               ? Icon(Icons.visibility_outlined)
-              : Icon(Icons.visibility_off_outlined),
+              : Icon(Icons.visibility_off_outlined), onPressed: () {  },
         ),
       ),
     );

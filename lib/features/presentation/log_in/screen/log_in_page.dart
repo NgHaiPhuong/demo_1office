@@ -4,6 +4,7 @@ import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../core/custom_text_field.dart';
 import '../bloc/log_in_bloc.dart';
 
 class LogInPage extends StatefulWidget {
@@ -50,7 +51,7 @@ class _LogInPageState extends State<LogInPage> {
                         ),
                       ),
                     ),
-                    _buildTextField(context, true),
+                    CustomTextField(),
                     SizedBox(height: 28),
                     _buildTextField(context, false),
                     SizedBox(height: 12),

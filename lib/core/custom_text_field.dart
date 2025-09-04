@@ -1,11 +1,28 @@
-
 import 'package:flutter/material.dart';
 
-class CustomTextField {
+class CustomTextField extends StatelessWidget {
+  final bool isNameKey;
+  final bool isObscureText;
+  final TextEditingController? controller;
+  final void Function(String)? onChanged;
+  final String? Function(String?)? validator;
 
-  Widget _buildTextField(BuildContext context, bool isNameKey, bool isVisibily) {
+  const CustomTextField({
+    super.key,
+    this.isNameKey = true,
+    this.isObscureText = false,
+    this.controller,
+    this.onChanged,
+    this.validator,
+  });
+
+  @override
+  Widget build(BuildContext context) {
     return TextFormField(
-      validator: (value) {
+      controller: controller,
+      onChanged: onChanged,
+      obscureText: isObscureText,
+      validator: validator ?? (value) {
         if (value == null || value.trim().isEmpty) {
           return "Vui lòng điền vào trường này";
         }
@@ -13,26 +30,24 @@ class CustomTextField {
       },
       decoration: InputDecoration(
         labelText: isNameKey ? "Tên đăng nhập*" : "Mật khẩu*",
-        labelStyle: TextStyle(color: Colors.grey),
-        prefixIcon: isNameKey
-            ? Icon(Icons.person_outline_sharp, color: Colors.grey)
-            : Icon(Icons.lock_outline_rounded, color: Colors.grey),
-        hintStyle: TextStyle(color: Colors.grey),
-        contentPadding: EdgeInsets.symmetric(vertical: 14, horizontal: 21),
+        labelStyle: const TextStyle(color: Colors.grey),
+        prefixIcon: Icon(
+          isNameKey ? Icons.person_outline_sharp : Icons.lock_outline_rounded,
+          color: Colors.grey,
+        ),
+        hintStyle: const TextStyle(color: Colors.grey),
+        contentPadding: const EdgeInsets.symmetric(vertical: 14, horizontal: 21),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8),
-          borderSide: BorderSide(color: Colors.grey, width: 2),
+          borderSide: const BorderSide(color: Colors.grey, width: 2),
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8),
-          borderSide: BorderSide(color: Colors.blueAccent, width: 2),
+          borderSide: const BorderSide(color: Colors.blueAccent, width: 2),
         ),
-        suffixIcon: isNameKey
-            ? SizedBox()
-            : IconButton(
-          icon: isVisibily
-              ? Icon(Icons.visibility_outlined)
-              : Icon(Icons.visibility_off_outlined), onPressed: () {  },
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(8),
+          borderSide: const BorderSide(color: Colors.grey, width: 2),
         ),
       ),
     );

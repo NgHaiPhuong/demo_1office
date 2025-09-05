@@ -3,8 +3,7 @@ import 'package:demo_1office/features/presentation/log_in/bloc/log_in_state.dart
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
-import '../../../../core/custom_text_field.dart';
+import '../../../../core/utils/custom_text_field.dart';
 import '../bloc/log_in_bloc.dart';
 
 class LogInPage extends StatefulWidget {
@@ -81,6 +80,7 @@ class _LogInPageState extends State<LogInPage> {
                         ),
                         InkWell(
                           onTap: () {
+                            print("object");
                             Navigator.of(context).push(
                               MaterialPageRoute(
                                 builder: (context) => ForgotPassPage(),

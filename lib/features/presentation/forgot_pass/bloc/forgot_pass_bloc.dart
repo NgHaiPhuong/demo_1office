@@ -6,6 +6,4 @@ class ForgotPassCubit extends Cubit<ForgotPassState> {
   // final ForgotPassUserCase logInUserCase;
 
   ForgotPassCubit() : super(ForgotPassInitial());
-
-
 }

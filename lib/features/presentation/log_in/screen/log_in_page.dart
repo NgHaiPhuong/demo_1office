@@ -3,6 +3,7 @@ import 'package:demo_1office/features/presentation/log_in/bloc/log_in_state.dart
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../home/screen/home_page.dart';
 import '../../../../core/utils/custom_text_field.dart';
 import '../bloc/log_in_bloc.dart';
 
@@ -80,7 +81,6 @@ class _LogInPageState extends State<LogInPage> {
                         ),
                         InkWell(
                           onTap: () {
-                            print("object");
                             Navigator.of(context).push(
                               MaterialPageRoute(
                                 builder: (context) => ForgotPassPage(),
@@ -107,9 +107,14 @@ class _LogInPageState extends State<LogInPage> {
                       ),
                       child: TextButton(
                         onPressed: () {
-                          if (nameKey.currentState!.validate()) {
+                          /*if (nameKey.currentState!.validate()) {
                             nameKey.currentState!.save();
-                          }
+                          }*/
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) => HomePage(),
+                            ),
+                          );
                         },
                         child: Text(
                           "ĐĂNG NHẬP",

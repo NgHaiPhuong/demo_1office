@@ -1,11 +1,10 @@
 import 'dart:math';
-
+import 'package:demo_1office/features/presentation/confirm/page/confirm_page.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/utils/utils.dart';
-import '../../confirm/page/confirm_page.dart';
 import '../bloc/forgot_pass_bloc.dart';
 import '../bloc/forgot_pass_state.dart';
 

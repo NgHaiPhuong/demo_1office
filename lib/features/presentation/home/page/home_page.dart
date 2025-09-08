@@ -1,6 +1,11 @@
 import 'package:demo_1office/features/presentation/menu/page/menu_page.dart';
 import 'package:flutter/material.dart';
 
+import '../../timesheet/page/timesheet_page.dart';
+import '../../widget/category_bottomsheet.dart';
+import '../../widget/individual_bottomsheet.dart';
+import '../widget/home_header.dart';
+
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
@@ -16,13 +21,9 @@ class HomePage extends StatelessWidget {
               child: ListView(
                 children: [
                   _buildNeedBeDone(),
-                  const SizedBox(height: 16),
                   _buildPropose(),
-                  const SizedBox(height: 16),
                   _buildWorkTracking(),
-                  const SizedBox(height: 16),
                   _buildTimeCard(),
-                  const SizedBox(height: 16),
                   _buildEventsList(),
                 ],
               ),
@@ -30,7 +31,7 @@ class HomePage extends StatelessWidget {
           ],
         ),
       ),
-      bottomNavigationBar: _buildNavigationBar(),
+      bottomNavigationBar: _buildNavigationBar(context),
     );
   }
 
@@ -110,7 +111,7 @@ class HomePage extends StatelessWidget {
 
   Widget _buildNeedBeDone() {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16),
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       child: Column(
         children: [
           _buildTitle('Việc cân thực hiện', hasFilter: true),
@@ -153,7 +154,7 @@ class HomePage extends StatelessWidget {
 
   Widget _buildWorkTracking() {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16),
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       child: Column(
         children: [
           _buildTitle('Việc bàn giao, theo dõi', hasFilter: true),
@@ -196,7 +197,7 @@ class HomePage extends StatelessWidget {
 
   Widget _buildPropose() {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16),
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       child: Column(
         children: [
           _buildTitle('Đề xuất của bạn', hasFilter: true),
@@ -327,7 +328,7 @@ class HomePage extends StatelessWidget {
 
   Widget _buildTimeCard() {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 16),
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -604,7 +605,7 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  Widget _buildNavigationBar() {
+  Widget _buildNavigationBar(BuildContext context) {
     return Container(
       padding: EdgeInsets.symmetric(vertical: 6),
       height: 80,
@@ -613,22 +614,35 @@ class HomePage extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          _buildItemNavigationBar(Icons.menu, 'Danh mục'),
-          _buildItemNavigationBar(Icons.date_range_rounded, 'Bảng công'),
+          _buildItemNavigationBar(Icons.menu, 'Danh mục', () {
+            showCategoryBottomSheet(context);
+          }),
+          _buildItemNavigationBar(Icons.date_range_rounded, 'Bảng công',(){
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const TimesheetPage()),
+            );
+          }),
           _buildItemNavigationBar(Icons.add_box_outlined, 'Tạo mới'),
           _buildItemNavigationBar(Icons.paid_outlined, 'Bảng lương'),
-          _buildItemNavigationBar(Icons.person_outline, 'Cá nhân'),
+          _buildItemNavigationBar(Icons.person_outline, 'Cá nhân', () {
+            showIndividualBottomSheet(context);
+          }),
         ],
       ),
     );
   }
 
-  Widget _buildItemNavigationBar(IconData icon, String label) {
-    return Column(
-      children: [
-        Icon(icon, size: 35),
-        Text(label, style: TextStyle(fontSize: 12)),
-      ],
+  Widget _buildItemNavigationBar(IconData icon, String label,
+      [VoidCallback? onTap]) {
+    return InkWell(
+      onTap: onTap,
+      child: Column(
+        children: [
+          Icon(icon, size: 30),
+          Text(label, style: TextStyle(fontSize: 12))
+        ],
+      ),
     );
   }
 }

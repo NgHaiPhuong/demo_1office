@@ -1,6 +1,7 @@
 import 'package:demo_1office/features/presentation/confirm/bloc/confirm_bloc.dart';
 import 'package:demo_1office/features/presentation/forgot_pass/bloc/forgot_pass_bloc.dart';
 import 'package:demo_1office/features/presentation/log_in/bloc/log_in_bloc.dart';
+import 'package:demo_1office/features/presentation/log_in/page/log_in_page.dart';
 import 'package:demo_1office/features/presentation/verification/bloc/verification_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';

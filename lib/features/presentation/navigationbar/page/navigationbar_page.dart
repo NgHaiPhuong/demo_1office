@@ -3,14 +3,14 @@ import 'package:flutter/material.dart';
 import '../../forgot_pass/page/forgot_pass_page.dart';
 import '../../home/page/home_page.dart';
 
-class NavigationBarScreen extends StatefulWidget {
-  const NavigationBarScreen({super.key});
+class NavigationBarPage extends StatefulWidget {
+  const NavigationBarPage({super.key});
 
   @override
-  State<NavigationBarScreen> createState() => _NavigationBarScreenState();
+  State<NavigationBarPage> createState() => _NavigationBarPageState();
 }
 
-class _NavigationBarScreenState extends State<NavigationBarScreen> {
+class _NavigationBarPageState extends State<NavigationBarPage> {
   int _currentIndex = 4;
 
   final _pages = const [

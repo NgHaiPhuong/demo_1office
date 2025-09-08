@@ -1,15 +1,10 @@
-
 import '../../../data/models/user.dart';
 
 class ForgotPassState {
-  final bool obscureText;
-
-  const ForgotPassState({this.obscureText = true});
+  const ForgotPassState();
 
   ForgotPassState copyWith({bool? obscureText}) {
-    return ForgotPassState(
-      obscureText: obscureText ?? this.obscureText,
-    );
+    return ForgotPassState();
   }
 }
 

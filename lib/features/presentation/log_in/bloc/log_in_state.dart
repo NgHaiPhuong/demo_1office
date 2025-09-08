@@ -19,7 +19,8 @@ class LogInState {
 
 class LogInInitial extends LogInState {}
 
-class LogInLoading extends LogInState {}
+class LogInLoading extends LogInState {
+}
 
 class LogInSuccess extends LogInState {
   final String message;

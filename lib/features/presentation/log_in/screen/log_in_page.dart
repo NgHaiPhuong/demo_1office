@@ -3,7 +3,8 @@ import 'package:demo_1office/features/presentation/log_in/bloc/log_in_state.dart
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
+import '../../home/screen/home_page.dart';
+import '../../../../core/utils/custom_text_field.dart';
 import '../bloc/log_in_bloc.dart';
 
 class LogInPage extends StatefulWidget {
@@ -50,7 +51,7 @@ class _LogInPageState extends State<LogInPage> {
                         ),
                       ),
                     ),
-                    _buildTextField(context, true),
+                    CustomTextField(),
                     SizedBox(height: 28),
                     _buildTextField(context, false),
                     SizedBox(height: 12),
@@ -61,14 +62,21 @@ class _LogInPageState extends State<LogInPage> {
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
                             Checkbox(
-                            materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                            value: state.isSaveInfo,
-                            activeColor: Colors.blueAccent,
-                            onChanged: (bool? value) {
-                              cubit.isSaveInfo(value);
-                            },
-                          ),
-                            Text("Giữ tôi luôn đăng nhập", style: TextStyle(fontSize: 14, color: Colors.grey),),
+                              materialTapTargetSize:
+                                  MaterialTapTargetSize.shrinkWrap,
+                              value: state.isSaveInfo,
+                              activeColor: Colors.blueAccent,
+                              onChanged: (bool? value) {
+                                cubit.isSaveInfo(value);
+                              },
+                            ),
+                            Text(
+                              "Giữ tôi luôn đăng nhập",
+                              style: TextStyle(
+                                fontSize: 14,
+                                color: Colors.grey,
+                              ),
+                            ),
                           ],
                         ),
                         InkWell(
@@ -98,14 +106,25 @@ class _LogInPageState extends State<LogInPage> {
                         borderRadius: BorderRadius.circular(15),
                       ),
                       child: TextButton(
-                          onPressed: () {
-                            print("r12");
-                            if(nameKey.currentState!.validate()) {
-                              print("object");
-                              nameKey.currentState!.save();
-                            }
-                          }, child: Text("ĐĂNG NHẬP", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),)),
-                    )
+                        onPressed: () {
+                          /*if (nameKey.currentState!.validate()) {
+                            nameKey.currentState!.save();
+                          }*/
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) => HomePage(),
+                            ),
+                          );
+                        },
+                        child: Text(
+                          "ĐĂNG NHẬP",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ),
                   ],
                 ),
               ),

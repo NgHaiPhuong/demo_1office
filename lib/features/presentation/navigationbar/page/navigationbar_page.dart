@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../forgot_pass/screen/forgot_pass_page.dart';
-import '../../home/screen/home_page.dart';
+import '../../forgot_pass/page/forgot_pass_page.dart';
+import '../../home/page/home_page.dart';
 
 class NavigationBarScreen extends StatefulWidget {
   const NavigationBarScreen({super.key});

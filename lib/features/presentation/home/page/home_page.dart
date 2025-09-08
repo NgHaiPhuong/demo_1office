@@ -1,3 +1,4 @@
+import 'package:demo_1office/features/presentation/menu/page/menu_page.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
@@ -10,7 +11,7 @@ class HomePage extends StatelessWidget {
       body: SafeArea(
         child: Column(
           children: [
-            _buildHeader(),
+            _buildHeader(context),
             Expanded(
               child: ListView(
                 children: [
@@ -33,14 +34,23 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  Widget _buildHeader() {
+  Widget _buildHeader(BuildContext context) {
     return Container(
       color: Colors.white,
       margin: EdgeInsets.only(bottom: 16),
       padding: const EdgeInsets.all(16),
       child: Row(
         children: [
-          const Icon(Icons.grid_view_outlined, size: 28),
+          InkWell(
+            onTap: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => MenuPage(),
+                ),
+              );
+            },
+            child: const Icon(Icons.grid_view_outlined, size: 28),
+          ),
           const SizedBox(width: 12),
           Expanded(
             child: Text(
@@ -617,7 +627,7 @@ class HomePage extends StatelessWidget {
     return Column(
       children: [
         Icon(icon, size: 35),
-        Text(label, style: TextStyle(fontSize: 12))
+        Text(label, style: TextStyle(fontSize: 12)),
       ],
     );
   }

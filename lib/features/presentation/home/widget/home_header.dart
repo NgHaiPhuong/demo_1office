@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../page/home_page.dart';
+
 class HomeHeader extends StatelessWidget {
   final String userName;
   const HomeHeader({super.key, required this.userName});
@@ -59,7 +61,14 @@ class HomeHeader extends StatelessWidget {
                 ],
               ),
               const SizedBox(width: 12),
-              const Icon(Icons.home_filled, color: Colors.green, size: 30),
+              InkWell(
+                onTap: (){
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const HomePage()),
+                  );
+                },
+                  child: const Icon(Icons.home_outlined, size: 30)),
             ],
           ),
         ],

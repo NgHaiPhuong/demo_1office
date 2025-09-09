@@ -77,7 +77,7 @@ class _PayrollPage extends State<PayrollPage> {
   Widget _buildNavigationBar(BuildContext context) {
     return Container(
       padding: EdgeInsets.symmetric(vertical: 6),
-      height: 60,
+      height: 80,
       color: Colors.white,
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,

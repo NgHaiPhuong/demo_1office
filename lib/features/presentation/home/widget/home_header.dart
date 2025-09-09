@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+import '../../menu/page/menu_page.dart';
+import '../page/home_page.dart';
+
 class HomeHeader extends StatelessWidget {
   final String userName;
   const HomeHeader({super.key, required this.userName});
@@ -11,7 +14,16 @@ class HomeHeader extends StatelessWidget {
       padding: const EdgeInsets.all(16),
       child: Row(
         children: [
-          const Icon(Icons.grid_view_outlined, size: 28),
+          InkWell(
+            onTap: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => MenuPage(),
+                ),
+              );
+            },
+            child: const Icon(Icons.grid_view_outlined, size: 28),
+          ),
           const SizedBox(width: 12),
           Expanded(
             child: Text(
@@ -59,7 +71,14 @@ class HomeHeader extends StatelessWidget {
                 ],
               ),
               const SizedBox(width: 12),
-              const Icon(Icons.home_filled, color: Colors.green, size: 30),
+              InkWell(
+                onTap: (){
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const HomePage()),
+                  );
+                },
+                  child: const Icon(Icons.home_outlined, size: 30)),
             ],
           ),
         ],

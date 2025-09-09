@@ -3,7 +3,7 @@ import 'package:demo_1office/features/presentation/payroll/page/payroll_page.dar
 import 'package:flutter/material.dart';
 
 import '../../timesheet/page/timesheet_page.dart';
-import '../../widget/category_bottomsheet.dart';
+import '../widget/category_bottomsheet.dart';
 import '../../widget/individual_bottomsheet.dart';
 import '../widget/home_header.dart';
 
@@ -102,7 +102,7 @@ class HomePage extends StatelessWidget {
                 ],
               ),
               const SizedBox(width: 12),
-              const Icon(Icons.home_filled, color: Colors.green, size: 30),
+              const Icon(Icons.home, color: Colors.green, size: 30),
             ],
           ),
         ],

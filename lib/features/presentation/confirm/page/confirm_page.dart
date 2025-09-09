@@ -1,9 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-
 import '../../verification/page/verification_page.dart';
-import '../bloc/confirm_bloc.dart';
-import '../bloc/confirm_state.dart';
 
 class ConfirmPage extends StatelessWidget {
   const ConfirmPage({super.key, required this.info});

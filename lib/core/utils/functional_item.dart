@@ -36,7 +36,7 @@ class FunctionItem extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             Icon(icon, color: iconColor, size: 26),
-            const SizedBox(width: 8),
+            const SizedBox(width: 12),
             Text(
               text,
               style: textStyle ?? TextStyle(fontSize: 18, color: textColor),

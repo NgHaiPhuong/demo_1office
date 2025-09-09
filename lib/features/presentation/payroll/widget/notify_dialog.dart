@@ -25,11 +25,11 @@ void showCustomDialog(BuildContext context) {
                     "Thông báo",
                     style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                   ),
-                  IconButton(
-                    icon: const Icon(Icons.close, color: Colors.grey),
-                    onPressed: () {
+                  InkWell(
+                    onTap: () {
                       Navigator.of(context).pop();
                     },
+                    child: Icon(Icons.close, color: Colors.grey),
                   ),
                 ],
               ),

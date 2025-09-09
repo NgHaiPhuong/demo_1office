@@ -1,4 +1,5 @@
 import 'package:demo_1office/features/presentation/menu/page/menu_page.dart';
+import 'package:demo_1office/features/presentation/payroll/page/payroll_page.dart';
 import 'package:flutter/material.dart';
 
 import '../../timesheet/page/timesheet_page.dart';
@@ -624,7 +625,12 @@ class HomePage extends StatelessWidget {
             );
           }),
           _buildItemNavigationBar(Icons.add_box_outlined, 'Tạo mới'),
-          _buildItemNavigationBar(Icons.paid_outlined, 'Bảng lương'),
+          _buildItemNavigationBar(Icons.paid_outlined, 'Bảng lương', () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const PayrollPage()),
+            );
+          }),
           _buildItemNavigationBar(Icons.person_outline, 'Cá nhân', () {
             showIndividualBottomSheet(context);
           }),

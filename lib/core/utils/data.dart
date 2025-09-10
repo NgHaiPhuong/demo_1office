@@ -1,7 +1,71 @@
 import 'package:flutter/material.dart';
+import '../../features/data/models/general_item.dart';
+import '../../features/data/models/healthy_info.dart';
 import '../../features/data/models/menu_item.dart';
+import '../../features/data/models/work_conscious.dart';
+import '../../features/data/models/workprocess_item.dart';
 
 class LoadData {
+
+  final List<WorkConscious> workList = [
+    WorkConscious(indicator: "Ngày công", total: "26.41 công", average: "13.2"),
+    WorkConscious(indicator: "Đi muộn", total: "1 lần", average: "0.5"),
+    WorkConscious(indicator: "Về sớm", total: "0 lần", average: "0"),
+    WorkConscious(indicator: "Xin nghỉ", total: "1 lần", average: "0.5"),
+    WorkConscious(indicator: "Tăng ca", total: "0 giờ", average: "0"),
+  ];
+
+  final List<HealthInfo> healthList = [
+    HealthInfo(title: "Huyết áp", value: "--", unit: "mmHg"),
+    HealthInfo(title: "Nhịp tim", value: "--", unit: "Nhịp/phút"),
+    HealthInfo(title: "Nhóm máu", value: "--", unit: "--"),
+    HealthInfo(title: "Chiều cao", value: "--", unit: "cm"),
+    HealthInfo(title: "Cân nặng", value: "--", unit: "kg"),
+  ];
+
+  List<String> documentList = [
+    "Ảnh cá nhân",
+    "Bản sao giấy khai sinh",
+    "Bản sao sổ hộ khẩu",
+    "Bằng cấp, trình độ chuyên môn",
+    "Bảo hiểm xã hội",
+    "Cam kết chính thức",
+    "Cam kết làm việc",
+    "Cam kết thai sản",
+    "Cam kết thử việc",
+    "CMT/Căn cước/HC",
+    "Cơ cấu lương",
+    "Đánh giá thử việc",
+    "Đề xuất điều chỉnh chức vụ, thu nhập",
+    "Giấy khám sức khỏe",
+    "Hợp đồng lao động",
+    "Information security agreement",
+    "Quyết định bổ nhiệm",
+    "Quyết định chấm dứt HĐLĐ",
+    "Sơ yếu lý lịch",
+    "Tạo tài khoản email",
+    "Thư mời làm việc",
+  ];
+
+  List<WorkProcessItem> workProcessList = [
+    WorkProcessItem(
+      date: "04/08/2025",
+      status: "Đang làm việc",
+      statusColor: Colors.green,
+      title: "Hợp đồng lao động - Fresher Android",
+      details:
+      "524-01/2025/HĐTV-TERACOM • Hợp đồng thử việc • Công ty Cổ phần Teracom • Bộ phận Phát triển • DIV1 • Nhân viên",
+    ),
+    WorkProcessItem(
+      date: "04/08/2025",
+      status: "Đã làm việc",
+      statusColor: Colors.teal,
+      title: "Hợp đồng lao động - Fresher Android",
+      details:
+      "",
+    ),
+  ];
+
   final List<MenuItem> menuItems = [
     MenuItem(id: "network", title: "Mạng nội bộ", icon: Icons.language, color: Colors.blue, group: "WORKPLACE", isActive: true),
     MenuItem(id: "sign", title: "Ký số", icon: Icons.edit, color: Colors. blue, group: "WORKPLACE", isActive: true),
@@ -35,5 +99,64 @@ class LoadData {
     MenuItem(id: "one", title: "One", icon: Icons.change_history, color: Colors.orange, group: "ADVANCE"),
     MenuItem(id: "support", title: "Hỗ trợ", icon: Icons.headset, color: Colors.blue, group: "ADVANCE", isActive: true),
     MenuItem(id: "report", title: "Báo cáo", icon: Icons.bar_chart, color: Colors.orange, group: "ADVANCE"),
+  ];
+
+  List<GeneralItem> generalItems = [
+    GeneralItem(
+      id: "email",
+      title: "Email",
+      information: "nghaiphuong2003@gmail.com",
+      icon: Icons.email_outlined,
+      color: Colors.red,
+    ),
+    GeneralItem(
+      id: "dt",
+      title: "Điện thoại",
+      information: "0867820523",
+      icon: Icons.phone,
+      color: Colors.green,
+    ),
+    GeneralItem(
+      id: "dob",
+      title: "Ngày sinh",
+      information: "27/12/2003",
+      icon: Icons.cake_outlined,
+      color: Colors.blue,
+    ),
+    GeneralItem(
+      id: "hometown",
+      title: "Nguyên quán",
+      information: "--",
+      icon: Icons.home_outlined,
+      color: Colors.orange,
+    ),
+    GeneralItem(
+      id: "gender",
+      title: "Giới tính",
+      information: "Nữ",
+      icon: Icons.person_outline,
+      color: Colors.blue,
+    ),
+    GeneralItem(
+      id: "marital_status",
+      title: "Tình trạng hôn nhân",
+      information: "--",
+      icon: Icons.star_border,
+      color: Colors.blue,
+    ),
+    GeneralItem(
+      id: "account",
+      title: "Tài khoản 10Office",
+      information: "phuongnth",
+      icon: Icons.account_circle_outlined,
+      color: Colors.greenAccent,
+    ),
+    GeneralItem(
+      id: "gps_location",
+      title: "Địa điểm chấm công GPS",
+      information: "Tất cả",
+      icon: Icons.location_on_outlined,
+      color: Colors.green,
+    ),
   ];
 }

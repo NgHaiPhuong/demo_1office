@@ -1,23 +1,11 @@
 
-import 'package:demo_1office/features/presentation/log_in/page/log_in_page.dart';
-import 'package:demo_1office/features/presentation/payroll/tab/all_tab.dart';
-import 'package:demo_1office/features/presentation/payroll/tab/history_tab.dart';
-import 'package:demo_1office/features/presentation/payroll/tab/payroll_tab.dart';
+import 'package:demo_1office/features/presentation/personnel_records/tab/personnel_tab.dart';
 import 'package:flutter/material.dart';
 
 import '../../home/widget/home_header.dart';
-import '../../widget/individual_bottomsheet.dart';
-import '../widget/category_bottom_sheet.dart';
-import '../widget/select_year_bottomsheet.dart';
 
-class PayrollPage extends StatefulWidget {
-  const PayrollPage({super.key});
-
-  @override
-  State<PayrollPage> createState() => _PayrollPage();
-}
-
-class _PayrollPage extends State<PayrollPage> {
+class PersonnelRecordsPage extends StatelessWidget {
+  const PersonnelRecordsPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +20,7 @@ class _PayrollPage extends State<PayrollPage> {
               const HomeHeader(userName: 'Nguyễn Thị Hải Phương'),
               _buildTabBar(),
               Expanded(
-                child: TabBarView(children: [PayrollTab(), AllTab(), HistoryTab()]),
+                child: TabBarView(children: [PersonnelTab()]),
               ),
             ],
           ),
@@ -65,9 +53,13 @@ class _PayrollPage extends State<PayrollPage> {
           unselectedLabelColor: Colors.grey,
           dividerHeight: 0,
           tabs: const [
-            Tab(child: Text("Bảng lương", style: TextStyle(fontSize: 16))),
-            Tab(child: Text("Tất cả", style: TextStyle(fontSize: 16))),
-            Tab(child: Text("Lịch sử lương và phụ cấp", style: TextStyle(fontSize: 16))),
+            Tab(child: Text("Thông tin chung", style: TextStyle(fontSize: 16))),
+            Tab(child: Text("Sơ yếu lý lịch", style: TextStyle(fontSize: 16))),
+            Tab(child: Text("Công việc & Hợp đồng", style: TextStyle(fontSize: 16))),
+            Tab(child: Text("Bảo hiểm & Phúc lợi", style: TextStyle(fontSize: 16))),
+            Tab(child: Text("Lương & Phụ cấp", style: TextStyle(fontSize: 16))),
+            Tab(child: Text("Thông tin phép", style: TextStyle(fontSize: 16))),
+            Tab(child: Text("Thông tin nghỉ bù", style: TextStyle(fontSize: 16))),
           ],
         ),
       ),
@@ -83,15 +75,11 @@ class _PayrollPage extends State<PayrollPage> {
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          _buildItemNavigationBar(Icons.menu, "Danh mục", () {
-            showCategoryPayrollBottomSheet(context);
-          }),
-          _buildItemNavigationBar(Icons.date_range_rounded, "Chọn năm", () {
-            showSelectYearBottomSheet(context);
-          }),
-          _buildItemNavigationBar(Icons.person_outline, "Cá nhân", () {
-            showIndividualBottomSheet(context);
-          }),
+          _buildItemNavigationBar(Icons.cloud_upload_rounded, "Tải lên"),
+          _buildItemNavigationBar(Icons.attach_file, "Đính kèm"),
+          _buildItemNavigationBar(Icons.note_alt_rounded, "Cập nhật"),
+          _buildItemNavigationBar(Icons.menu, "Danh mục"),
+          _buildItemNavigationBar(Icons.person_outline_sharp, "Cá nhân"),
         ],
       ),
     );

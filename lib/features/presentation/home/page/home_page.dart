@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 import '../../timesheet/page/timesheet_page.dart';
 import '../widget/category_bottomsheet.dart';
-import '../../widget/individual_bottomsheet.dart';
+import '../../individual/page/individual_bottomsheet.dart';
 import '../widget/home_header.dart';
 
 class HomePage extends StatelessWidget {

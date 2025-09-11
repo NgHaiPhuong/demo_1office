@@ -1,13 +1,12 @@
-import 'package:demo_1office/features/presentation/timesheet/page/weekly_timesheet_page.dart';
-
+import 'package:demo_1office/features/presentation/timesheet/widget/weekly_timesheet.dart';
 import '../../home/widget/home_header.dart';
 import 'package:flutter/material.dart';
-
-import '../../widget/individual_bottomsheet.dart';
+import '../../individual/page/individual_bottomsheet.dart';
 import '../widget/category_bottomsheet.dart';
 import '../widget/select_month_bottomsheet.dart';
-import 'list_page.dart';
-import 'statistical_page.dart';
+import '../widget/list.dart';
+import '../widget/monthly_timesheet.dart';
+import '../widget/statistical.dart';
 
 class TimesheetPage extends StatelessWidget {
   const TimesheetPage({super.key});
@@ -55,36 +54,14 @@ class TimesheetPage extends StatelessWidget {
           Expanded(
             child: TabBarView(
               children: [
-                _tabContent("Tất cả"),
-                WeeklyTimeSheetPage(),
-                StatisticalPage(),
-                ListPage(),
+                MonthlyTimesheet(),
+                WeeklyTimesheet(),
+                Statistical(),
+                List(),
               ],
             ),
           ),
         ],
-      ),
-    );
-  }
-
-  Widget _tabContent(String title) {
-    return Center(
-      child: Container(
-        width: 300,
-        height: 200,
-        decoration: BoxDecoration(
-          color: Colors.red,
-          borderRadius: BorderRadius.circular(16),
-        ),
-        alignment: Alignment.center,
-        child: Text(
-          title,
-          style: const TextStyle(
-            color: Colors.white,
-            fontSize: 28,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
       ),
     );
   }

@@ -10,7 +10,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'features/data/datasources/user_data_sources.dart';
 import 'features/data/repositories/user_repository_impl.dart';
 import 'features/domain/usecases/log_in.dart';
-import 'features/presentation/log_in/page/log_in_page.dart';
+import 'package:calendar_view/calendar_view.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -34,8 +34,10 @@ void main() {
         BlocProvider(create: (_) => ConfirmCubit()),
         BlocProvider(create: (_) => VerificationCubit()),
       ],
-      child: const MyApp(),
-    ),
+      child: CalendarControllerProvider<Object?>(
+        controller: EventController<Object?>(),
+        child: const MyApp(),
+    ),),
   );
 }
 

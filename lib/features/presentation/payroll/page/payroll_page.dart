@@ -1,12 +1,10 @@
-
-import 'package:demo_1office/features/presentation/log_in/page/log_in_page.dart';
 import 'package:demo_1office/features/presentation/payroll/tab/all_tab.dart';
 import 'package:demo_1office/features/presentation/payroll/tab/history_tab.dart';
 import 'package:demo_1office/features/presentation/payroll/tab/payroll_tab.dart';
 import 'package:flutter/material.dart';
 
 import '../../home/widget/home_header.dart';
-import '../../widget/individual_bottomsheet.dart';
+import '../../individual/page/individual_bottomsheet.dart';
 import '../widget/category_bottom_sheet.dart';
 import '../widget/select_year_bottomsheet.dart';
 

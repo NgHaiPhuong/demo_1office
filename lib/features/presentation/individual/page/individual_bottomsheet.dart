@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import '../../../core/utils/functional_item.dart';
-import '../log_in/page/log_in_page.dart';
+import '../../../../core/utils/functional_item.dart';
+import '../../account/page/account_page.dart';
+import '../../log_in/page/log_in_page.dart';
 
 void showIndividualBottomSheet(BuildContext context) {
   showModalBottomSheet(
@@ -131,6 +132,12 @@ Widget _buildContentBottomSheet(BuildContext context) {
           FunctionItem(
             icon: Icons.person_outlined,
             text: 'Tài khoản',
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const AccountPage()),
+              );
+            },
           ),
           FunctionItem(
             icon: Icons.library_books_outlined,

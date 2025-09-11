@@ -1,4 +1,7 @@
+import 'package:demo_1office/core/utils/no_data.dart';
 import 'package:flutter/material.dart';
+
+import '../../../../core/utils/header.dart';
 
 class AllTab extends StatefulWidget {
   const AllTab({super.key});
@@ -25,76 +28,17 @@ class _AllTab extends State<AllTab> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            _buildSalaryHeader(),
+            HeaderTitle(title: "Danh sách bảng lương 2025", isExpand: isExpand, onTap: () {
+              expandDetailSalary;
+            }, isMoreIcon: true, icon: Icons.calendar_month_outlined),
             Visibility(
               visible: isExpand,
               maintainSize: false,
               maintainAnimation: false,
-              child: _buildDetailPayroll(),
+              child: NoData(),
             ),
           ],
         ),
-      ),
-    );
-  }
-
-  Widget _buildDetailPayroll() {
-    return Container(
-      height: 180,
-      decoration: BoxDecoration(
-        color: Colors.white,
-        border: BoxBorder.all(width: 0.2, color: Colors.grey),
-      ),
-      child: Center(
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Icon(Icons.description_outlined, size: 50, color: Colors.grey[400]),
-            const SizedBox(width: 12),
-            Text(
-              "Không có bảng lương nào",
-              style: TextStyle(fontSize: 16, color: Colors.grey[500]),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-
-  Widget _buildSalaryHeader() {
-    return Container(
-      decoration: BoxDecoration(
-        color: Colors.white,
-        border: BoxBorder.all(width: 0.2, color: Colors.grey),
-      ),
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 5),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          const Text(
-            "Danh sách bảng lương 2025",
-            style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
-          ),
-          Row(
-            children: [
-              IconButton(
-                icon: const Icon(Icons.calendar_month_outlined, color: Colors.grey),
-                onPressed: () {
-                  // Xử lý khi bấm vào icon bar chart
-                },
-              ),
-              IconButton(
-                icon: Icon(
-                  isExpand
-                      ? Icons.remove
-                      : Icons.check_box_outline_blank_outlined,
-                  color: Colors.grey,
-                ),
-                onPressed: expandDetailSalary,
-              ),
-            ],
-          ),
-        ],
       ),
     );
   }

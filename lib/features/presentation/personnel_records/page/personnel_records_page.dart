@@ -1,5 +1,8 @@
 
-import 'package:demo_1office/features/presentation/personnel_records/tab/personnel_tab.dart';
+import 'package:demo_1office/features/presentation/personnel_records/widget/insurance_tab.dart';
+import 'package:demo_1office/features/presentation/personnel_records/widget/job_tab.dart';
+import 'package:demo_1office/features/presentation/personnel_records/widget/personnel_tab.dart';
+import 'package:demo_1office/features/presentation/personnel_records/widget/vitae_tab.dart';
 import 'package:flutter/material.dart';
 
 import '../../home/widget/home_header.dart';
@@ -11,7 +14,7 @@ class PersonnelRecordsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return DefaultTabController(
       initialIndex: 0,
-      length: 3,
+      length: 7,
       child: Scaffold(
         backgroundColor: Colors.grey[200],
         body: SafeArea(
@@ -20,7 +23,12 @@ class PersonnelRecordsPage extends StatelessWidget {
               const HomeHeader(userName: 'Nguyễn Thị Hải Phương'),
               _buildTabBar(),
               Expanded(
-                child: TabBarView(children: [PersonnelTab()]),
+                child: TabBarView(children: [
+                  PersonnelTab(),
+                  VitaeTab(),
+                  JobTab(),
+                  InsuranceTab(),
+                ]),
               ),
             ],
           ),

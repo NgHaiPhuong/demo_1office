@@ -1,11 +1,105 @@
+import 'package:demo_1office/features/data/models/contractitem.dart';
+import 'package:demo_1office/features/data/models/familyinfo.dart';
 import 'package:flutter/material.dart';
+import '../../features/data/models/acountinfo.dart';
 import '../../features/data/models/general_item.dart';
 import '../../features/data/models/healthy_info.dart';
+import '../../features/data/models/infoIitem.dart';
+import '../../features/data/models/jobitem.dart';
 import '../../features/data/models/menu_item.dart';
 import '../../features/data/models/work_conscious.dart';
 import '../../features/data/models/workprocess_item.dart';
 
 class LoadData {
+
+  final List<ContractInfo> contractList = [
+    ContractInfo(
+      creator: "",
+      idContract: "524-01/2025/HĐTV-TERACOM",
+      nameContract: "Hợp đồng thử việc",
+      departments: "DIV1",
+      status: "Đang hiệu lực",
+      signingDate: "--",
+      effectiveDate: "04/08/2025",
+      toDate: "3/10/2025",
+      creationDate: "04/08/2025",
+    ),
+  ];
+
+  final List<JobItem> jobList = [
+    JobItem(label: "Trạng thái", value: "Đang làm việc", isHighlighted: true),
+    JobItem(label: "Phòng ban", value: "Công ty Cổ phần Teracom > DIV1"),
+    JobItem(label: "Vị trí", value: "Fresher Android"),
+    JobItem(label: "Ngày vào", value: "04/08/2025"),
+    JobItem(label: "Tên hợp đồng", value: "Hợp đồng thử việc"),
+    JobItem(label: "Tài khoản 10Office", value: "phuongnth (04/08/2025)"),
+    JobItem(label: "Nhóm người dùng", value: "Nhóm nhân viên (BASIC_HRM)"),
+  ];
+
+  List<FamilyInfo> familyData = [
+    FamilyInfo(
+      name: " ",
+      phone: "--",
+      taxCode: "--",
+      idNumber: "--",
+      date: "--",
+      place: "--",
+      dependency: "Không",
+      time: "--",
+      note: "--",
+    ),
+  ];
+
+  List<AccountInfo> accountData = [
+    AccountInfo(
+      accountNumber: "--",
+      accountName: "NGUYEN THI HAI PHUONG",
+      bank: "--",
+      branch: "--",
+    ),
+  ];
+
+  List<InfoItem> idNumberList = [
+    InfoItem(
+      title: "Số CMT/CC/CCCD",
+      value:
+      "027303000269",
+    ),
+    InfoItem(
+      title: "Ngày cấp, nơi cấp CMT/CC/CCCD",
+      value:
+      "09/09/2021, Cục cảnh sát DKQL cư trú và DLQG về dân cư",
+    ),
+  ];
+
+  List<InfoItem> infoList = [
+    InfoItem(
+      title: "Chỗ ở hiện nay",
+      value:
+      "Phú Diễn, Phúc Diễn, Bắc Từ Liêm, Hà Nội, Thành phố Hà Nội, Việt Nam",
+    ),
+    InfoItem(
+      title: "Thường trú",
+      value:
+      "Xã Phú Cường (cũ), Huyện Sóc Sơn, Thành Phố Hà Nội, Thành phố Hà Nội, Việt Nam",
+    ),
+    InfoItem(
+      title: "Ngân hàng",
+      value: "NGUYEN THI HAI PHUONG",
+    ),
+    InfoItem(
+      title: "Số năm kinh nghiệm hiện tại",
+      value: "0.1",
+    ),
+    InfoItem(
+      title: "Nghĩa vụ quân sự",
+      value: "Không phải đi",
+    ),
+    InfoItem(
+      title: "Ghi chú",
+      value: "",
+    ),
+  ];
 
   final List<WorkConscious> workList = [
     WorkConscious(indicator: "Ngày công", total: "26.41 công", average: "13.2"),

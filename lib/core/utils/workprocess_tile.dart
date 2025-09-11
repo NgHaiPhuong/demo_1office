@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../data/models/workprocess_item.dart';
+import '../../features/data/models/workprocess_item.dart';
 
 class WorkProcessTile extends StatelessWidget {
   final WorkProcessItem item;

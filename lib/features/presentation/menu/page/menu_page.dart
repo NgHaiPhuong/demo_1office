@@ -2,6 +2,7 @@ import 'package:collection/collection.dart';
 import 'package:demo_1office/core/utils/data.dart';
 import 'package:demo_1office/features/data/models/menu_item.dart';
 import 'package:flutter/material.dart';
+import '../../single_word/page/single_word_page.dart';
 
 
 class MenuPage extends StatefulWidget {
@@ -14,6 +15,20 @@ class MenuPage extends StatefulWidget {
 class _MenuPage extends State<MenuPage> {
 
   final groupedItems = groupBy(LoadData().menuItems, (MenuItem item) => item.group);
+
+  void _handleNavigation(BuildContext context, String id) {
+    switch (id) {
+      case 'form':
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const SingleWordPage()),
+        );
+        break;
+      // Thêm các case khác tương ứng với các id khác
+      default:
+        debugPrint("No route defined for $id");
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -71,7 +86,7 @@ class _MenuPage extends State<MenuPage> {
   Widget _buildMenuItem(MenuItem item) {
     return GestureDetector(
       onTap: () {
-        debugPrint("Clicked on ${item.title}");
+        _handleNavigation(context, item.id);
       },
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,

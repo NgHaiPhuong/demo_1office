@@ -1,4 +1,5 @@
 
+import 'package:demo_1office/features/presentation/personnel_records/page/personnel_records_page.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../core/utils/functional_item.dart';
@@ -35,6 +36,13 @@ void showCategoryPayrollBottomSheet(BuildContext context) {
               FunctionItem(
                 icon: Icons.person_pin_outlined,
                 text: 'Hồ sơ nhân sự',
+                onTap: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => PersonnelRecordsPage(),
+                    ),
+                  );
+                },
               ),
               SizedBox(height: 8),
               FunctionItem(

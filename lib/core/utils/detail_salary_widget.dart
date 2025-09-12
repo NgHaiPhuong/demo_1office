@@ -63,12 +63,7 @@ class DetailSalaryWidget extends StatelessWidget {
               ),
             ],
           ),
-          Container(
-            margin: const EdgeInsets.only(top: 12),
-            width: double.infinity,
-            height: 1,
-            color: Colors.grey.shade200,
-          ),
+          Divider(color: Colors.grey.shade200)
         ],
       ),
     );

@@ -1,6 +1,5 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-
 import '../../features/presentation/payroll/widget/notify_dialog.dart';
 
 class HistorySalaryWidget extends StatelessWidget {
@@ -132,13 +131,10 @@ class HistorySalaryWidget extends StatelessWidget {
     overlayEntry = OverlayEntry(
       builder: (context) => Stack(
         children: [
-          // nền mờ
           GestureDetector(
             onTap: _removeOverlay,
-            child: Container(color: Colors.black.withOpacity(0.5)),
+            child: Container(color: Colors.black.withValues(alpha: 0.5)),
           ),
-
-          // tooltip nổi trên icon hỏi chấm
           Positioned(
             left: 12,
             top: position.dy - 60,

@@ -123,7 +123,7 @@ class _GeneralSettingsState extends State<GeneralSettings> {
         Container(
           padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
           decoration: BoxDecoration(
-            border: Border.all(color: Colors.grey.withOpacity(0.3)),
+            border: Border.all(color: Colors.grey.withValues(alpha: 0.3)),
             borderRadius: BorderRadius.circular(4),
           ),
           child: Row(
@@ -152,7 +152,7 @@ class _GeneralSettingsState extends State<GeneralSettings> {
         Container(
           padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
           decoration: BoxDecoration(
-            border: Border.all(color: Colors.grey.withOpacity(0.3)),
+            border: Border.all(color: Colors.grey.withValues(alpha: 0.3)),
             borderRadius: BorderRadius.circular(4),
           ),
           child: const Row(
@@ -193,7 +193,7 @@ class _GeneralSettingsState extends State<GeneralSettings> {
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
             decoration: BoxDecoration(
-              border: Border.all(color: Colors.grey.withOpacity(0.3)),
+              border: Border.all(color: Colors.grey.withValues(alpha: 0.3)),
               borderRadius: BorderRadius.circular(4),
             ),
             child: Row(
@@ -251,7 +251,7 @@ class _GeneralSettingsState extends State<GeneralSettings> {
                   boxShadow: isSelected
                       ? [
                           BoxShadow(
-                            color: color.withOpacity(0.4),
+                            color: color.withValues(alpha: 0.4),
                             blurRadius: 8,
                             spreadRadius: 2,
                           )

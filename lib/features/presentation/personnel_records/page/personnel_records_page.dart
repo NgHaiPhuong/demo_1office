@@ -1,7 +1,10 @@
 
+import 'package:demo_1office/features/presentation/personnel_records/widget/comp_leave_tab.dart';
 import 'package:demo_1office/features/presentation/personnel_records/widget/insurance_tab.dart';
 import 'package:demo_1office/features/presentation/personnel_records/widget/job_tab.dart';
+import 'package:demo_1office/features/presentation/personnel_records/widget/leave_info_tab.dart';
 import 'package:demo_1office/features/presentation/personnel_records/widget/personnel_tab.dart';
+import 'package:demo_1office/features/presentation/personnel_records/widget/salary_tab.dart';
 import 'package:demo_1office/features/presentation/personnel_records/widget/vitae_tab.dart';
 import 'package:flutter/material.dart';
 
@@ -28,6 +31,9 @@ class PersonnelRecordsPage extends StatelessWidget {
                   VitaeTab(),
                   JobTab(),
                   InsuranceTab(),
+                  SalaryTab(),
+                  LeaveInfoTab(),
+                  CompLeaveInfoTab()
                 ]),
               ),
             ],

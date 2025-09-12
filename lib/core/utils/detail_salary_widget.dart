@@ -11,9 +11,12 @@ class DetailSalaryWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [_buildSalaryTotal(), _buildListSalary()],
+    return Container(
+      color: Colors.white,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [_buildSalaryTotal(), _buildListSalary()],
+      ),
     );
   }
 
@@ -23,49 +26,51 @@ class DetailSalaryWidget extends StatelessWidget {
       itemCount: salaryByMonth.length,
       physics: const NeverScrollableScrollPhysics(),
       itemBuilder: (context, index) {
-        return Padding(
-          padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 16),
-          child: Column(
+        return _buildItemSalary(index);
+      },
+    );
+  }
+
+  Widget _buildItemSalary(int index) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 16),
+      child: Column(
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    "Tháng ${index + 1}",
-                    style: const TextStyle(fontSize: 16),
-                  ),
-                  Container(
-                    width: 43,
-                    height: 43,
-                    decoration: BoxDecoration(
-                      color: Colors.green.withValues(alpha: 0.08),
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                    child: Center(
-                      child: Text(
-                        ((index + 1) == DateTime.now().month)
-                            ? "-"
-                            : "${salaryByMonth[index]}",
-                        style: const TextStyle(
-                          color: Colors.green,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 16,
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
+              Text(
+                "Tháng ${index + 1}",
+                style: const TextStyle(fontSize: 16),
               ),
               Container(
-                margin: const EdgeInsets.only(top: 12),
-                width: double.infinity,
-                height: 1,
-                color: Colors.grey.shade200,
+                width: 43,
+                height: 43,
+                decoration: BoxDecoration(
+                  color: Colors.green.withValues(alpha: 0.08),
+                  borderRadius: BorderRadius.circular(8),
+                ),
+                child: Center(
+                  child: Text(
+                    ((index + 1) == DateTime.now().month) ? "-" : "${salaryByMonth[index]}",
+                    style: const TextStyle(
+                      color: Colors.green,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 16,
+                    ),
+                  ),
+                ),
               ),
             ],
           ),
-        );
-      },
+          Container(
+            margin: const EdgeInsets.only(top: 12),
+            width: double.infinity,
+            height: 1,
+            color: Colors.grey.shade200,
+          ),
+        ],
+      ),
     );
   }
 

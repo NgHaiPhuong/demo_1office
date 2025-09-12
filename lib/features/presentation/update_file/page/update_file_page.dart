@@ -16,7 +16,7 @@ class UpdateFilePage extends StatelessWidget {
         body: SafeArea(
           child: Column(
             children: [
-              const HomeHeader(userName: 'Cập nhật hồ sơ', isUpdateFile: true),
+              const HomeHeader(userName: 'Cập nhật hồ sơ', showBackButton: true),
               _buildTabBar(),
               Expanded(child: TabBarView(children: [
                 InfoTab(),

@@ -5,8 +5,13 @@ import '../page/home_page.dart';
 
 class HomeHeader extends StatelessWidget {
   final String userName;
-  final bool isUpdateFile;
-  const HomeHeader({super.key, required this.userName, this.isUpdateFile = false});
+  final bool showBackButton;
+
+  const HomeHeader({
+    super.key,
+    required this.userName,
+    this.showBackButton = false,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +20,13 @@ class HomeHeader extends StatelessWidget {
       padding: const EdgeInsets.all(16),
       child: Row(
         children: [
-          InkWell(
+          showBackButton
+              ?  InkWell(
+              onTap: () {
+                Navigator.of(context).pop();
+              },
+              child: Icon(Icons.arrow_back_ios_new_rounded))
+              : InkWell(
             onTap: () {
               Navigator.of(context).push(
                 MaterialPageRoute(
@@ -23,13 +34,19 @@ class HomeHeader extends StatelessWidget {
                 ),
               );
             },
-            child: Icon(isUpdateFile ? Icons.arrow_back : Icons.grid_view_outlined, size: 28),
+            child: const Icon(
+              Icons.grid_view_outlined,
+              size: 30,
+            ),
           ),
           const SizedBox(width: 12),
           Expanded(
             child: Text(
               userName,
-              style: const TextStyle(fontSize: 22, fontWeight: FontWeight.w500),
+              style: const TextStyle(
+                fontSize: 22,
+                fontWeight: FontWeight.w500,
+              ),
               maxLines: 1,
               overflow: TextOverflow.visible,
             ),
@@ -64,7 +81,10 @@ class HomeHeader extends StatelessWidget {
                       ),
                       child: const Text(
                         '1',
-                        style: TextStyle(color: Colors.white, fontSize: 12),
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 12,
+                        ),
                         textAlign: TextAlign.center,
                       ),
                     ),
@@ -73,13 +93,16 @@ class HomeHeader extends StatelessWidget {
               ),
               const SizedBox(width: 12),
               InkWell(
-                onTap: (){
+                onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => const HomePage()),
+                    MaterialPageRoute(
+                      builder: (context) => const HomePage(),
+                    ),
                   );
                 },
-                  child: const Icon(Icons.home_outlined, size: 30)),
+                child: const Icon(Icons.home_outlined, size: 30),
+              ),
             ],
           ),
         ],
@@ -87,4 +110,3 @@ class HomeHeader extends StatelessWidget {
     );
   }
 }
-

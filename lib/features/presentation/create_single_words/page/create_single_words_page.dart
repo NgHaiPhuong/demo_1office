@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../application_for_leave/page/application_for_leave_page.dart';
+
 class CreateSingleWordsPage extends StatelessWidget {
   const CreateSingleWordsPage({super.key});
 
@@ -21,7 +23,13 @@ class CreateSingleWordsPage extends StatelessWidget {
                       Colors.purple,
                       Colors.purple[50]!,
                       'Đơn xin nghỉ',
-                      'Đơn xin nghỉ phát sinh khi bạn muốn nghỉ nhiều ngày làm việc',
+                      'Đơn xin nghỉ phát sinh khi bạn muốn nghỉ nhiều ngày làm việc', () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) => ApplicationForLeavePage(),
+                        ),
+                      );
+                      }
                     ),
                     _buildCardCreateSingleWord(
                       Icons.person_outline,

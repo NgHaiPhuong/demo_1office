@@ -5,7 +5,8 @@ import '../page/home_page.dart';
 
 class HomeHeader extends StatelessWidget {
   final String userName;
-  const HomeHeader({super.key, required this.userName});
+  final bool isUpdateFile;
+  const HomeHeader({super.key, required this.userName, this.isUpdateFile = false});
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +23,7 @@ class HomeHeader extends StatelessWidget {
                 ),
               );
             },
-            child: const Icon(Icons.grid_view_outlined, size: 28),
+            child: Icon(isUpdateFile ? Icons.arrow_back : Icons.grid_view_outlined, size: 28),
           ),
           const SizedBox(width: 12),
           Expanded(

@@ -2,8 +2,9 @@
 import 'package:flutter/material.dart';
 
 class NoData extends StatelessWidget {
+  final String? message;
 
-  const NoData({super.key});
+  const NoData({super.key, this.message});
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +16,7 @@ class NoData extends StatelessWidget {
         children: [
           Icon(Icons.event_note, size: 50, color: Colors.grey),
           SizedBox(width: 20),
-          Text("Không tìm thấy kết quả nào", style: TextStyle(color: Colors.grey, fontSize: 16))
+          Text(message ?? "Không tìm thấy kết quả nào", style: TextStyle(color: Colors.grey, fontSize: 16))
         ],
       ),
     );

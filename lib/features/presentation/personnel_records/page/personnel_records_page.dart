@@ -1,4 +1,5 @@
 
+import 'package:demo_1office/features/presentation/personnel_records/bottom_sheet/attach_bottom_sheet.dart';
 import 'package:demo_1office/features/presentation/personnel_records/widget/comp_leave_tab.dart';
 import 'package:demo_1office/features/presentation/personnel_records/widget/insurance_tab.dart';
 import 'package:demo_1office/features/presentation/personnel_records/widget/job_tab.dart';
@@ -6,9 +7,13 @@ import 'package:demo_1office/features/presentation/personnel_records/widget/leav
 import 'package:demo_1office/features/presentation/personnel_records/widget/personnel_tab.dart';
 import 'package:demo_1office/features/presentation/personnel_records/widget/salary_tab.dart';
 import 'package:demo_1office/features/presentation/personnel_records/widget/vitae_tab.dart';
+import 'package:demo_1office/features/presentation/update_file/page/update_file_page.dart';
 import 'package:flutter/material.dart';
 
 import '../../home/widget/home_header.dart';
+import '../../individual/page/individual_bottomsheet.dart';
+import '../bottom_sheet/category_bottom_sheet.dart';
+import '../bottom_sheet/upload_bottom_sheet.dart';
 
 class PersonnelRecordsPage extends StatelessWidget {
   const PersonnelRecordsPage({super.key});
@@ -89,11 +94,24 @@ class PersonnelRecordsPage extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          _buildItemNavigationBar(Icons.cloud_upload_rounded, "Tải lên"),
-          _buildItemNavigationBar(Icons.attach_file, "Đính kèm"),
-          _buildItemNavigationBar(Icons.note_alt_rounded, "Cập nhật"),
-          _buildItemNavigationBar(Icons.menu, "Danh mục"),
-          _buildItemNavigationBar(Icons.person_outline_sharp, "Cá nhân"),
+          _buildItemNavigationBar(Icons.menu, "Danh mục", () {
+            showCategoryPersonnelBottomSheet(context);
+          }),
+          _buildItemNavigationBar(Icons.attach_file, "Đính kèm", () {
+            showAttachBottomSheet(context);
+          }),
+          _buildItemNavigationBar(Icons.note_alt_rounded, "Cập nhật", () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const UpdateFilePage()),
+            );
+          }),
+          _buildItemNavigationBar(Icons.cloud_upload_rounded, "Tải lên", () {
+            showUpLoadBottomSheet(context);
+          }),
+          _buildItemNavigationBar(Icons.person_outline_sharp, "Cá nhân", () {
+            showIndividualBottomSheet(context);
+          }),
         ],
       ),
     );

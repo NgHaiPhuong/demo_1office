@@ -26,9 +26,7 @@ class _HistoryTab extends State<HistoryTab> {
       isExpanded: isExpanded,
       overlayEntry: _overlayEntry,
       iconKey: _iconKey,
-      onTap: () {
-        isHideAndShow();
-      },
+      onTap: isHideAndShow,
     );
   }
 }

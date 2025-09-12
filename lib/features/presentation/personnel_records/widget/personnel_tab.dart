@@ -361,7 +361,7 @@ class _PersonnelTab extends State<PersonnelTab> {
                       backgroundColor: Colors.grey.shade200,
                       borderRadius: BorderRadius.circular(8),
                       valueColor: AlwaysStoppedAnimation<Color>(
-                        color.withOpacity(0.7),
+                        color.withValues(alpha: 0.7),
                       ),
                     ),
                     Positioned(

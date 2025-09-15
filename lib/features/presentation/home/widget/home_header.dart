@@ -1,3 +1,4 @@
+import 'package:demo_1office/features/presentation/notify/page/notifty_page.dart';
 import 'package:flutter/material.dart';
 
 import '../../menu/page/menu_page.dart';
@@ -65,7 +66,15 @@ class HomeHeader extends StatelessWidget {
               const SizedBox(width: 12),
               Stack(
                 children: [
-                  const Icon(Icons.notifications_none, size: 30),
+                  InkWell(
+                    onTap: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) => NotifyPage(),
+                        ),
+                      );
+                    }, child: const Icon(Icons.notifications_none, size: 30)
+                  ),
                   Positioned(
                     right: 0,
                     top: 0,

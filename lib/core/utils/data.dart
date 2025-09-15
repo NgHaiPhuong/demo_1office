@@ -1,16 +1,46 @@
 import 'package:demo_1office/features/data/models/contractitem.dart';
 import 'package:demo_1office/features/data/models/familyinfo.dart';
 import 'package:flutter/material.dart';
+
 import '../../features/data/models/acountinfo.dart';
 import '../../features/data/models/general_item.dart';
 import '../../features/data/models/healthy_info.dart';
 import '../../features/data/models/infoIitem.dart';
 import '../../features/data/models/jobitem.dart';
 import '../../features/data/models/menu_item.dart';
+import '../../features/data/models/notification_item.dart';
 import '../../features/data/models/work_conscious.dart';
 import '../../features/data/models/workprocess_item.dart';
 
 class LoadData {
+
+  final List<NotificationItem> notifications = [
+    NotificationItem(
+      sender: "Admin Teracom",
+      content: "đã duyệt 3 đơn checkin/out",
+      time: "10:04",
+      date: "04/09/2025",
+      category: "Đơn checkin/out",
+      iconUrl: "https://img.icons8.com/color/48/admin-settings-male.png",
+    ),
+    NotificationItem(
+      sender: "",
+      content: "[1OFFICE] THÔNG BÁO ĐỊNH KỲ CÁC TÍNH NĂNG NÂNG CẤP - THÁNG 08/2025",
+      time: "11:16",
+      date: "03/09/2025",
+      category: "Thông báo",
+      iconUrl: "https://img.icons8.com/color/48/briefcase.png",
+      isUnread: false,
+    ),
+    NotificationItem(
+      sender: "Admin Teracom",
+      content: "đã duyệt 1 đơn xin nghỉ Không lương của Nguyễn Thị Hải Phương",
+      time: "11:32",
+      date: "27/08/2025",
+      category: "Đơn xin nghỉ",
+      iconUrl: "https://img.icons8.com/color/48/admin-settings-male.png",
+    ),
+  ];
 
   final List<ContractInfo> contractList = [
     ContractInfo(

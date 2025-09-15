@@ -26,31 +26,7 @@ class _InfoTab extends State<InfoTab> {
             ],
           ),
         ),
-
-        Align(
-          alignment: Alignment.bottomCenter,
-          child: Container(
-            color: Colors.white,
-            padding: const EdgeInsets.all(16),
-            child: SizedBox(
-              width: double.infinity,
-              height: 50,
-              child: ElevatedButton(
-                onPressed: () {},
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.green,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                ),
-                child: const Text(
-                  "CẬP NHẬT",
-                  style: TextStyle(fontSize: 16, color: Colors.white, fontWeight: FontWeight.bold),
-                ),
-              ),
-            ),
-          ),
-        )
+        _buildBtnUpdate(),
       ],
     );
   }
@@ -62,28 +38,15 @@ class _InfoTab extends State<InfoTab> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          _buildHeader("Thông tin chung"),
+          _buildHeader("Thông tin gia đình & người phụ thuộc"),
           const SizedBox(height: 16),
-          _buildTextField(label: "Email", value: "nghaiphuong2003@gmail.com"),
-          _buildTextField(label: "Điện thoại", value: "0826561203"),
-          _buildTextField(label: "Nguyên quán", value: '', icon: Icons.search),
-          _buildTextField(
-            label: "[Thường trú] Xã phường, Quận huyện, Tỉnh...",
-            value: "Thành phố Hà Nội, Việt Nam",
-            icon: Icons.clear_rounded,
-          ),
-          _buildTextField(
-            label: "[Thường trú] Số nhà, đường",
-            value: "Xã Phú Cường (cũ), Huyện Sóc Sơn, Thành phố Hà Nội",
-          ),
-          _buildTextField(
-            label: "[Chỗ ở hiện nay] Số nhà, đường",
-            value: "Phú Diễn, Phúc Diễn, Bắc Từ Liêm, Hà Nội",
-          ),
-          _buildTextField(
-            label: "[Chỗ ở hiện nay] Xã phường, Quận huyện, Tỉnh...",
-            value: "Thành phố Hà Nội, Việt Nam",
-            icon: Icons.clear_rounded,
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Expanded(child: _buildTextField(label: "Mối quan hệ", icon: Icons.keyboard_arrow_down)),
+              SizedBox(width: 12),
+              Expanded(child: _buildTextField(label: "Họ và tên")),
+            ],
           ),
         ],
       ),
@@ -92,6 +55,7 @@ class _InfoTab extends State<InfoTab> {
 
   Widget _buildGeneralInfo() {
     return Container(
+      width: double.infinity,
       color: Colors.white,
       padding: const EdgeInsets.all(16),
       child: Column(
@@ -127,7 +91,7 @@ class _InfoTab extends State<InfoTab> {
 
   Widget _buildTextField({
     required String label,
-    required String value,
+    String? value,
     IconData? icon,
   }) {
     return Container(
@@ -157,6 +121,33 @@ class _InfoTab extends State<InfoTab> {
           ),
         ),
       ],
+    );
+  }
+
+  Widget _buildBtnUpdate() {
+    return Align(
+      alignment: Alignment.bottomCenter,
+      child: Container(
+        color: Colors.white,
+        padding: const EdgeInsets.all(16),
+        child: SizedBox(
+          width: double.infinity,
+          height: 50,
+          child: ElevatedButton(
+            onPressed: () {},
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Colors.green,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(8),
+              ),
+            ),
+            child: const Text(
+              "CẬP NHẬT",
+              style: TextStyle(fontSize: 16, color: Colors.white, fontWeight: FontWeight.bold),
+            ),
+          ),
+        ),
+      ),
     );
   }
 }

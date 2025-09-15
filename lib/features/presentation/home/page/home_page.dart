@@ -2,10 +2,10 @@ import 'package:demo_1office/features/presentation/menu/page/menu_page.dart';
 import 'package:demo_1office/features/presentation/payroll/page/payroll_page.dart';
 import 'package:flutter/material.dart';
 
+import '../../notify/page/notifty_page.dart';
 import '../../timesheet/page/timesheet_page.dart';
 import '../widget/category_bottomsheet.dart';
 import '../../individual/page/individual_bottomsheet.dart';
-import '../widget/home_header.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -78,7 +78,15 @@ class HomePage extends StatelessWidget {
               const SizedBox(width: 12),
               Stack(
                 children: [
-                  const Icon(Icons.notifications_none, size: 30),
+                  InkWell(
+                    onTap: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) => NotifyPage(),
+                        ),
+                      );
+                    }, child: const Icon(Icons.notifications_none, size: 30)
+                  ),
                   Positioned(
                     right: 0,
                     top: 0,

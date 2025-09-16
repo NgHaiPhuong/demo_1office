@@ -1,3 +1,4 @@
+import 'package:demo_1office/features/data/models/application_model.dart';
 import 'package:demo_1office/features/data/models/contractitem.dart';
 import 'package:demo_1office/features/data/models/familyinfo.dart';
 import 'package:flutter/material.dart';
@@ -13,6 +14,25 @@ import '../../features/data/models/work_conscious.dart';
 import '../../features/data/models/workprocess_item.dart';
 
 class LoadData {
+
+  List<ApplicationItem> applicationList = [
+    ApplicationItem(name: "Bài viết", des: "Mạng nội bộ"),
+    ApplicationItem(name: "Hồ sơ nhân sự", des: "Trang cá nhân"),
+    ApplicationItem(name: "Hồ sơ ký số", des: "Ký số"),
+    ApplicationItem(name: "Tích hợp ký số cá nhân", des: "Ký số"),
+    ApplicationItem(name: "Đơn xin nghỉ", des: "Đơn từ"),
+    ApplicationItem(name: "Đơn vắng mặt", des: "Đơn từ"),
+    ApplicationItem(name: "Đơn checkin/out", des: "Đơn từ"),
+    ApplicationItem(name: "Đơn đổi ca", des: "Đơn từ"),
+    ApplicationItem(name: "Đơn tăng ca", des: "Đơn từ"),
+    ApplicationItem(name: "Đơn đăng ký ca", des: "Đơn từ"),
+    ApplicationItem(name: "Đơn làm thêm", des: "Đơn từ"),
+    ApplicationItem(name: "Đơn công tác", des: "Đơn từ"),
+    ApplicationItem(name: "Đơn làm theo chế độ", des: "Đơn từ"),
+    ApplicationItem(name: "Đơn làm thôi việc", des: "Đơn từ"),
+    ApplicationItem(name: "Ticket", des: "Hỗ trợ"),
+    ApplicationItem(name: "Thông báo cập nhật", des: "Hỗ trợ"),
+  ];
 
   final List<NotificationItem> notifications = [
     NotificationItem(
@@ -56,7 +76,7 @@ class LoadData {
     ),
   ];
 
-  final List<JobItem> jobList = [
+  List<JobItem> jobList = [
     JobItem(label: "Trạng thái", value: "Đang làm việc", isHighlighted: true),
     JobItem(label: "Phòng ban", value: "Công ty Cổ phần Teracom > DIV1"),
     JobItem(label: "Vị trí", value: "Fresher Android"),

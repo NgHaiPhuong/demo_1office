@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class FunctionItem extends StatelessWidget {
-  final IconData icon;
+  final IconData? icon;
   final String text;
   final Color backgroundColor;
   final Color iconColor;
@@ -13,7 +13,7 @@ class FunctionItem extends StatelessWidget {
 
   const FunctionItem({
     super.key,
-    required this.icon,
+    this.icon,
     required this.text,
     this.backgroundColor = Colors.white,
     this.iconColor = Colors.grey,

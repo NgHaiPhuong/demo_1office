@@ -1,11 +1,10 @@
 
 import 'package:demo_1office/features/presentation/notify/widget/all_notify_tab.dart';
-import 'package:demo_1office/features/presentation/personnel_records/widget/job_tab.dart';
 import 'package:flutter/material.dart';
 
-import '../../home/widget/home_header.dart';
 import '../widget/browser_tab.dart';
 import '../widget/job_notify_tab.dart';
+import '../widget/notify_header.dart';
 import '../widget/ticket_tab.dart';
 
 class NotifyPage extends StatefulWidget {
@@ -27,7 +26,7 @@ class _NotifyPage extends State<NotifyPage> {
         body: SafeArea(
           child: Column(
             children: [
-              const HomeHeader(userName: 'Nguyễn Thị Hải Phương'),
+              const NotifyHeader(title: "Hộp thông báo", showBackButton: true),
               _buildTabBar(),
               Expanded(
                 child: TabBarView(children: [

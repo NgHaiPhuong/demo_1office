@@ -1,6 +1,13 @@
 import 'package:flutter/material.dart';
 
-import '../../application_for_leave/page/application_for_leave_page.dart';
+import '../../absence_application/page/absence_application_page.dart';
+import '../../business_trip_application/page/business_trip_application_page.dart';
+import '../../checkin_out_application/page/checkin_out_application.dart';
+import '../../extra_work_application/page/extra_work_application_page.dart';
+import '../../flexible_work_application/page/flexible_work_application_page.dart';
+import '../../leave_application/page/leave_application_page.dart';
+import '../../overtime_application/page/overtime_application_page.dart';
+import '../../resignation_application/page/resignation_application_page.dart';
 
 class CreateSingleWordsPage extends StatelessWidget {
   const CreateSingleWordsPage({super.key});
@@ -26,7 +33,7 @@ class CreateSingleWordsPage extends StatelessWidget {
                       'Đơn xin nghỉ phát sinh khi bạn muốn nghỉ nhiều ngày làm việc', () {
                       Navigator.of(context).push(
                         MaterialPageRoute(
-                          builder: (context) => ApplicationForLeavePage(),
+                          builder: (context) => LeaveApplicationPage(),
                         ),
                       );
                       }
@@ -36,49 +43,91 @@ class CreateSingleWordsPage extends StatelessWidget {
                       Colors.blue,
                       Colors.blue[50]!,
                       'Đơn vắng mặt',
-                      'Đơn vắng mặt phát sinh khi bạn có nhu cầu vắng mặt 1 khoảng thời gian trong ca làm việc',
+                      'Đơn vắng mặt phát sinh khi bạn có nhu cầu vắng mặt 1 khoảng thời gian trong ca làm việc', () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) => AbsenceApplicationPage(),
+                        ),
+                      );
+                    }
                     ),
                     _buildCardCreateSingleWord(
                       Icons.star_border_outlined,
                       Colors.orange,
                       Colors.orange[50]!,
                       'Đơn làm thêm',
-                      'Đơn làm thêm phát sinh khi bạn có khoảng thời gian làm thêm không nằm trong ca làm việc',
+                      'Đơn làm thêm phát sinh khi bạn có khoảng thời gian làm thêm không nằm trong ca làm việc',() {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) => ExtraWorkApplicationPage(),
+                        ),
+                      );
+                    }
                     ),
                     _buildCardCreateSingleWord(
                       Icons.check_circle_outline,
                       Colors.red,
                       Colors.red[50]!,
                       'Đơn checkin/out',
-                      'Đơn checkin/out phát sinh khi bạn quên chấm công lúc đến hoặc lúc về',
+                      'Đơn checkin/out phát sinh khi bạn quên chấm công lúc đến hoặc lúc về',() {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) => CheckInOutApplication(),
+                        ),
+                      );
+                    }
                     ),
                     _buildCardCreateSingleWord(
                       Icons.sticky_note_2_outlined,
                       Colors.blue,
                       Colors.blue[50]!,
                       'Đơn tăng ca',
-                      'Đơn tăng ca phát sinh khi bạn có nhu cầu làm thêm một ca nào đó ngoài ca làm việc đã được phân',
+                      'Đơn tăng ca phát sinh khi bạn có nhu cầu làm thêm một ca nào đó ngoài ca làm việc đã được phân',() {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) => OvertimeApplicationPage(),
+                        ),
+                      );
+                    }
                     ),
                     _buildCardCreateSingleWord(
                       Icons.directions_car_filled_outlined,
                       Colors.lightGreen,
                       Colors.lightGreen[50]!,
                       'Đơn công tác',
-                      'Đơn công tác phát sinh khi bạn được yêu cầu đi công tác và không thể chấm công trên công ty',
+                      'Đơn công tác phát sinh khi bạn được yêu cầu đi công tác và không thể chấm công trên công ty',() {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) => BusinessTripApplicationPage(),
+                        ),
+                      );
+                    }
                     ),
                     _buildCardCreateSingleWord(
                       Icons.timer_outlined,
                       Colors.blue,
                       Colors.blue[50]!,
                       'Đơn làm theo chế độ',
-                      'NĐơn làm theo chế độ phats sinh khi bạn được hưởng chế độ đi muộn - về sớm',
+                      'Đơn làm theo chế độ phats sinh khi bạn được hưởng chế độ đi muộn - về sớm',() {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) => FlexibleWorkApplicationPage(),
+                        ),
+                      );
+                    }
                     ),
                     _buildCardCreateSingleWord(
                       Icons.person_remove_outlined,
                       Colors.red,
                       Colors.red[50]!,
                       'Đơn thôi việc',
-                      'Đơn thôi việc phát sinh khi bạn nghỉ việc',
+                      'Đơn thôi việc phát sinh khi bạn nghỉ việc',() {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) => ResignationApplicationPage(),
+                        ),
+                      );
+                    }
                     ),
                   ],
                 ),

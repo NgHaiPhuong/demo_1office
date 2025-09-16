@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../../../../core/utils/functional_item.dart';
 import '../../account/page/account_page.dart';
 import '../../log_in/page/log_in_page.dart';
+import '../../timekeeping/page/timekeeping_page.dart';
 
 void showIndividualBottomSheet(BuildContext context) {
   showModalBottomSheet(
@@ -16,9 +17,7 @@ void showIndividualBottomSheet(BuildContext context) {
             topLeft: Radius.circular(30),
             topRight: Radius.circular(30),
           ),
-          border: Border(
-            top: BorderSide(color: Color(0xFFE0E0E0), width: 1),
-          ),
+          border: Border(top: BorderSide(color: Color(0xFFE0E0E0), width: 1)),
         ),
         padding: const EdgeInsets.fromLTRB(20, 16, 20, 24),
         child: SafeArea(
@@ -36,12 +35,13 @@ void showIndividualBottomSheet(BuildContext context) {
                   CircleAvatar(
                     backgroundColor: Colors.grey[50],
                     radius: 22,
-                    child: Icon(
-                      Icons.check,
-                      ),
-                    ),
+                    child: Icon(Icons.check),
+                  ),
                   SizedBox(width: 12),
-                  Text('Thiết bị của bạn đã được xác thực', style: TextStyle(fontSize: 18) ),
+                  Text(
+                    'Thiết bị của bạn đã được xác thực',
+                    style: TextStyle(fontSize: 18),
+                  ),
                 ],
               ),
             ],
@@ -52,7 +52,7 @@ void showIndividualBottomSheet(BuildContext context) {
   );
 }
 
-Widget _buildHeaderBottomSheet(){
+Widget _buildHeaderBottomSheet() {
   return Row(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: [
@@ -75,50 +75,33 @@ Widget _buildHeaderBottomSheet(){
           children: [
             Text(
               'Nguyễn Thị Hải Phương',
-              style: TextStyle(
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
-              ),
+              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             ),
             SizedBox(height: 8),
             Row(
               children: [
-                Icon(
-                  Icons.shopping_bag_outlined,
-                  size: 24,
-                  color: Colors.grey,
-                ),
+                Icon(Icons.shopping_bag_outlined, size: 24, color: Colors.grey),
                 SizedBox(width: 4),
                 Text(
                   'DIV1',
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.grey,
-                  ),
+                  style: TextStyle(fontSize: 20, color: Colors.grey),
                 ),
               ],
             ),
             SizedBox(height: 8),
             Row(
               children: [
-                Icon(
-                  Icons.account_box_outlined,
-                  size: 24,
-                  color: Colors.grey,
-                ),
+                Icon(Icons.account_box_outlined, size: 24, color: Colors.grey),
                 SizedBox(width: 4),
                 Text(
                   'Fresher Android',
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.grey,
-                  ),
+                  style: TextStyle(fontSize: 20, color: Colors.grey),
                 ),
               ],
             ),
           ],
         ),
-      )
+      ),
     ],
   );
 }
@@ -139,10 +122,7 @@ Widget _buildContentBottomSheet(BuildContext context) {
               );
             },
           ),
-          FunctionItem(
-            icon: Icons.library_books_outlined,
-            text: 'Hướng dẫn',
-          ),
+          FunctionItem(icon: Icons.library_books_outlined, text: 'Hướng dẫn'),
           FunctionItem(
             icon: Icons.paid_outlined,
             text: 'Ứng lương 1OFFICE',
@@ -162,13 +142,13 @@ Widget _buildContentBottomSheet(BuildContext context) {
             icon: Icons.location_on_outlined,
             text: 'Chấm công GPS/Wifi',
             onTap: () {
-              Navigator.of(context).pop();
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => TimekeepingPage()),
+              );
             },
           ),
-          FunctionItem(
-            icon: Icons.style,
-            text: 'Màu giao diện',
-          ),
+          FunctionItem(icon: Icons.style, text: 'Màu giao diện'),
           FunctionItem(
             icon: Icons.g_translate_outlined,
             text: 'Ngôn ngữ',
@@ -181,21 +161,16 @@ Widget _buildContentBottomSheet(BuildContext context) {
             text: 'Giới thiệu 1Office',
             textColor: Colors.orange,
           ),
-          FunctionItem(
-            icon: Icons.lock_outline,
-            text: 'Đổi mật khẩu',
-          ),
+          FunctionItem(icon: Icons.lock_outline, text: 'Đổi mật khẩu'),
           FunctionItem(
             icon: Icons.logout_outlined,
             iconColor: Colors.red,
             text: 'Đăng xuất',
             textColor: Colors.red,
             onTap: () {
-              Navigator.of(context).push(
-                MaterialPageRoute(
-                  builder: (context) => LogInPage(),
-                ),
-              );
+              Navigator.of(
+                context,
+              ).push(MaterialPageRoute(builder: (context) => LogInPage()));
             },
           ),
         ],

@@ -4,8 +4,8 @@ import '../../home/widget/home_header.dart';
 import '../widget/select_calendar_bottomsheet.dart';
 import '../widget/select_time_bottomsheet.dart';
 
-class ApplicationForLeavePage extends StatelessWidget {
-  const ApplicationForLeavePage({super.key});
+class LeaveApplicationPage extends StatelessWidget {
+  const LeaveApplicationPage({super.key});
 
   @override
   Widget build(BuildContext context) {

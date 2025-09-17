@@ -1,4 +1,5 @@
 import 'dart:math';
+
 import 'package:demo_1office/features/presentation/confirm/page/confirm_page.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -105,7 +106,7 @@ class _ForgotPassPageState extends State<ForgotPassPage> {
       ),
       child: TextButton(
           onPressed: () {
-            if(Utils().isValidVNMobile(emailController.text) && (captcha == codeController.text)) {
+            if((Utils().isValidVNMobile(emailController.text) || Utils().validateEmail(emailController.text)) && (captcha == codeController.text)) {
               Navigator.of(context).push(
                 MaterialPageRoute(
                   builder: (context) => ConfirmPage(info: emailController.text),
@@ -157,7 +158,7 @@ class _ForgotPassPageState extends State<ForgotPassPage> {
       margin: const EdgeInsets.only(bottom: 22),
       color: Colors.grey.shade200,
       child: Text(
-        captcha, // Tạm thời fix cứng, có thể random sau
+        captcha,
         style: TextStyle(
           fontSize: 36,
           color: Colors.red,

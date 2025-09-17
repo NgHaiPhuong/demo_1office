@@ -4,7 +4,7 @@ void showCustomDialog(BuildContext context) {
 
   showDialog(
     context: context,
-    barrierDismissible: false, // bấm ra ngoài không tắt dialog
+    barrierDismissible: true,
     builder: (BuildContext context) {
       return Dialog(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),

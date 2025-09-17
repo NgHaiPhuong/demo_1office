@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+import '../../change_password/page/change_password_page.dart';
+import 'change_avatar_bottomsheet.dart';
+
 class GeneralSettings extends StatefulWidget {
   const GeneralSettings({super.key});
 
@@ -20,6 +23,8 @@ class _GeneralSettingsState extends State<GeneralSettings> {
     Colors.blue,
     Colors.amber,
   ];
+
+  Color? _selectedColor = Colors.green;
 
   @override
   Widget build(BuildContext context) {
@@ -47,10 +52,15 @@ class _GeneralSettingsState extends State<GeneralSettings> {
       color: Colors.white,
       child: Row(
         children: [
-          CircleAvatar(
-            radius: 30,
-            backgroundColor: Colors.grey[300],
-            child: const Icon(Icons.person_outline, size: 40, color: Colors.grey),
+          InkWell(
+            onTap: (){
+              showChangeAvatarBottomSheet(context);
+            },
+            child: CircleAvatar(
+              radius: 30,
+              backgroundColor: Colors.grey[300],
+              child: const Icon(Icons.person_outline, size: 40, color: Colors.grey),
+            ),
           ),
           const SizedBox(width: 16),
           const Expanded(
@@ -155,11 +165,18 @@ class _GeneralSettingsState extends State<GeneralSettings> {
             border: Border.all(color: Colors.grey.withValues(alpha: 0.3)),
             borderRadius: BorderRadius.circular(4),
           ),
-          child: const Row(
+          child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text('********'),
-              Icon(Icons.edit, size: 20, color: Colors.grey),
+              const Text('********'),
+              InkWell(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => ChangePasswordPage()),
+                    );
+                  },
+                  child: const Icon(Icons.edit, size: 20, color: Colors.grey)),
             ],
           ),
         ),
@@ -237,34 +254,41 @@ class _GeneralSettingsState extends State<GeneralSettings> {
             spacing: 12,
             runSpacing: 12,
             children: themeColors.map((color) {
-              final isSelected = color == Colors.green;
-              return Container(
-                width: 24,
-                height: 24,
-                decoration: BoxDecoration(
-                  color: color,
-                  shape: BoxShape.circle,
-                  border: Border.all(
-                    color: isSelected ? Colors.white : Colors.transparent,
-                    width: 2,
+              final isSelected = color == _selectedColor;
+              return GestureDetector(
+                onTap: () {
+                  setState(() {
+                    _selectedColor = color;
+                  });
+                },
+                child: Container(
+                  width: 28,
+                  height: 28,
+                  decoration: BoxDecoration(
+                    color: color,
+                    shape: BoxShape.circle,
+                    border: Border.all(
+                      color: isSelected ? Colors.white : Colors.transparent,
+                      width: 2,
+                    ),
+                    boxShadow: isSelected
+                        ? [
+                      BoxShadow(
+                        color: color.withValues(alpha: 0.4),
+                        blurRadius: 8,
+                        spreadRadius: 2,
+                      )
+                    ]
+                        : null,
                   ),
-                  boxShadow: isSelected
-                      ? [
-                          BoxShadow(
-                            color: color.withValues(alpha: 0.4),
-                            blurRadius: 8,
-                            spreadRadius: 2,
-                          )
-                        ]
+                  child: isSelected
+                      ? const Icon(
+                    Icons.check,
+                    size: 16,
+                    color: Colors.white,
+                  )
                       : null,
                 ),
-                child: isSelected
-                    ? const Icon(
-                        Icons.check,
-                        size: 16,
-                        color: Colors.white,
-                      )
-                    : null,
               );
             }).toList(),
           ),
@@ -272,4 +296,5 @@ class _GeneralSettingsState extends State<GeneralSettings> {
       ),
     );
   }
+
 }

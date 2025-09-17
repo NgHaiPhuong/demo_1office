@@ -200,6 +200,7 @@ class MonthlyTimesheetPage extends StatelessWidget {
 */
 
 
+import 'package:demo_1office/features/presentation/timesheet/widget/timekeeping_info_bottomsheet.dart';
 import 'package:flutter/material.dart';
 import 'package:calendar_view/calendar_view.dart';
 
@@ -228,7 +229,8 @@ class MonthlyTimesheet extends StatelessWidget {
                 cellBuilder: _customCell,
                 // onCellTap nhận (events, date)
                 onCellTap: (events, date) {
-                  _showDayDialog(context, date, events);
+                  /*_showDayDialog(context, date, events);*/
+                  showTimekeepingInfoBottomSheet(context, date);
                 },
                 // nếu muốn ẩn các ngày không trong tháng, có thể bật hideDaysNotInMonth
                 // hideDaysNotInMonth: true,

@@ -10,10 +10,22 @@ import '../../features/data/models/infoIitem.dart';
 import '../../features/data/models/jobitem.dart';
 import '../../features/data/models/menu_item.dart';
 import '../../features/data/models/notification_item.dart';
+import '../../features/data/models/salary_data.dart';
 import '../../features/data/models/work_conscious.dart';
 import '../../features/data/models/workprocess_item.dart';
 
 class LoadData {
+
+  List<SalaryData> dataSalary = [
+    SalaryData('Tháng 1', 1.2),
+    SalaryData('Tháng 2', 0),
+    SalaryData('Tháng 3', 0),
+    SalaryData('Tháng 4', 5.4),
+    SalaryData('Tháng 5', 0),
+    SalaryData('Tháng 6', 0),
+    SalaryData('Tháng 7', 0),
+    SalaryData('Tháng 8', 10.2),
+  ];
 
   List<ApplicationItem> applicationList = [
     ApplicationItem(name: "Bài viết", des: "Mạng nội bộ"),

@@ -1,4 +1,5 @@
 import 'package:demo_1office/core/utils/no_data.dart';
+import 'package:demo_1office/features/presentation/timesheet/widget/select_month_bottomsheet.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../core/utils/header.dart';
@@ -28,9 +29,16 @@ class _AllTab extends State<AllTab> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            HeaderTitle(title: "Danh sách bảng lương 2025", isExpand: isExpand, onTap: () {
-              expandDetailSalary;
-            }, isMoreIcon: true, icon: Icons.calendar_month_outlined),
+            HeaderTitle(
+              title: "Danh sách bảng lương 2025",
+              isExpand: isExpand,
+              onTap: expandDetailSalary,
+              isMoreIcon: true,
+              icon: Icons.calendar_month_outlined,
+              onTapMoreIcon: () {
+                showSelectMonthBottomSheet(context);
+              },
+            ),
             Visibility(
               visible: isExpand,
               maintainSize: false,

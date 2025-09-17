@@ -1,4 +1,5 @@
 import 'package:demo_1office/features/presentation/update_file/widget/Info_tab.dart';
+import 'package:demo_1office/features/presentation/update_file/widget/all_tab.dart';
 import 'package:flutter/material.dart';
 
 import '../../home/widget/home_header.dart';
@@ -19,7 +20,7 @@ class UpdateFilePage extends StatelessWidget {
               const HomeHeader(userName: 'Cập nhật hồ sơ', showBackButton: true),
               _buildTabBar(),
               Expanded(child: TabBarView(children: [
-                InfoTab(),
+                InfoTab(), AllUpdateFileTab()
               ])),
             ],
           ),

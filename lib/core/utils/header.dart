@@ -6,6 +6,7 @@ class HeaderTitle extends StatelessWidget {
   final bool isMoreIcon;
   final IconData? icon;
   final VoidCallback? onTap;
+  final VoidCallback? onTapMoreIcon;
 
   const HeaderTitle({
     super.key,
@@ -14,6 +15,7 @@ class HeaderTitle extends StatelessWidget {
     this.isMoreIcon = false,
     this.icon,
     this.onTap,
+    this.onTapMoreIcon,
   });
 
   @override
@@ -41,10 +43,10 @@ class HeaderTitle extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               InkWell(
-                onTap: onTap,
+                onTap: onTapMoreIcon,
                 child: Icon(isMoreIcon ? icon : null, color: Colors.grey),
               ),
-              SizedBox(width: 8),
+              SizedBox(width: 12),
               InkWell(
                 onTap: onTap,
                 child: Icon(

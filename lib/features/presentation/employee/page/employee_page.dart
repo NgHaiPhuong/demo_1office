@@ -1,5 +1,3 @@
-
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 class EmployeePage extends StatefulWidget {
@@ -10,9 +8,15 @@ class EmployeePage extends StatefulWidget {
 }
 
 class _EmployeePage extends State<EmployeePage> {
-
   final GlobalKey iconKey = GlobalKey();
   OverlayEntry? overlayEntry;
+  bool isShowEmployeeList = false;
+
+  void showEmployeeList() {
+    setState(() {
+      isShowEmployeeList = !isShowEmployeeList;
+    });
+  }
 
   void showOverlay(BuildContext context) {
     if (overlayEntry != null) {
@@ -24,45 +28,47 @@ class _EmployeePage extends State<EmployeePage> {
     final position = renderBox.localToGlobal(Offset.zero);
 
     overlayEntry = OverlayEntry(
-      builder: (context) => Stack(
-        children: [
-          GestureDetector(
-            onTap: _removeOverlay,
-            child: Container(color: Colors.black.withValues(alpha: 0.5)),
-          ),
-          Positioned(
-            left: 12,
-            top: position.dy - 150,
-            child: Material(
-              color: Colors.transparent,
-              child: Container(
-                width: 360,
-                padding: const EdgeInsets.all(12),
-                margin: const EdgeInsets.symmetric(horizontal: 20),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(5),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.black26,
-                      blurRadius: 6,
-                    )
-                  ],
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text("Để tìm hiểu nhiều từ khóa bạn có thể dùng dấu, để ngăn cách các từ khóa",
-                        style: TextStyle(color: Colors.grey, fontSize: 16)),
-                    Text("Ví dụ như: kinh doanh, trưởng phòng sẽ hiện ra lựa chọn vị trí trưởng phòng của phòng kinh doanh",
-                        style: TextStyle(color: Colors.grey, fontSize: 16)),
-                  ],
-                )
+      builder: (context) =>
+          Stack(
+            children: [
+              GestureDetector(
+                onTap: _removeOverlay,
+                child: Container(color: Colors.black.withValues(alpha: 0.5)),
               ),
-            ),
+              Positioned(
+                left: 12,
+                top: position.dy - 150,
+                child: Material(
+                  color: Colors.transparent,
+                  child: Container(
+                    width: 360,
+                    padding: const EdgeInsets.all(12),
+                    margin: const EdgeInsets.symmetric(horizontal: 20),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(5),
+                      boxShadow: [
+                        BoxShadow(color: Colors.black26, blurRadius: 6)
+                      ],
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "Để tìm hiểu nhiều từ khóa bạn có thể dùng dấu, để ngăn cách các từ khóa",
+                          style: TextStyle(color: Colors.grey, fontSize: 16),
+                        ),
+                        Text(
+                          "Ví dụ như: kinh doanh, trưởng phòng sẽ hiện ra lựa chọn vị trí trưởng phòng của phòng kinh doanh",
+                          style: TextStyle(color: Colors.grey, fontSize: 16),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ],
           ),
-        ],
-      ),
     );
 
     Overlay.of(context).insert(overlayEntry!);
@@ -103,11 +109,19 @@ class _EmployeePage extends State<EmployeePage> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text("Danh sách người dùng", style: TextStyle(color: Colors.grey, fontSize: 16)),
+          Text(
+            "Danh sách người dùng",
+            style: TextStyle(color: Colors.grey, fontSize: 16),
+          ),
           Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
-              const Icon((Icons.account_tree_outlined), color: Colors.grey),
+              InkWell(
+                  onTap: showEmployeeList,
+                  child: isShowEmployeeList
+                      ? Icon(Icons.format_list_numbered, color: Colors.green)
+                      : Icon(Icons.account_tree_outlined, color: Colors.grey),
+              ),
               Container(
                 margin: const EdgeInsets.symmetric(horizontal: 8),
                 width: 1,
@@ -119,12 +133,22 @@ class _EmployeePage extends State<EmployeePage> {
               GestureDetector(
                 key: iconKey,
                 onTap: () => showOverlay(context),
-                child: const Icon((Icons.help_outline), color: Colors.orangeAccent, size: 18),
+                child: const Icon(
+                  (Icons.help_outline),
+                  color: Colors.orangeAccent,
+                  size: 18,
+                ),
               ),
             ],
-          )
+          ),
         ],
-      )
+      ),
+    );
+  }
+
+  Widget _buildList() {
+    return Container(
+
     );
   }
 

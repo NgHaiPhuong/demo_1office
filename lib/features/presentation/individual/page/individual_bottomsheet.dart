@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../../../core/utils/functional_item.dart';
 import '../../account/page/account_page.dart';
+import '../../change_password/page/change_password_page.dart';
 import '../../log_in/page/log_in_page.dart';
 import '../../timekeeping/page/timekeeping_page.dart';
 
@@ -161,7 +162,13 @@ Widget _buildContentBottomSheet(BuildContext context) {
             text: 'Giới thiệu 1Office',
             textColor: Colors.orange,
           ),
-          FunctionItem(icon: Icons.lock_outline, text: 'Đổi mật khẩu'),
+          FunctionItem(icon: Icons.lock_outline, text: 'Đổi mật khẩu',
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => ChangePasswordPage()),
+              );
+            },),
           FunctionItem(
             icon: Icons.logout_outlined,
             iconColor: Colors.red,

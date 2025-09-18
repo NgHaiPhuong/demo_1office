@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import '../../../../core/utils/data.dart';
 import '../../../../core/utils/header.dart';
 import '../../../data/models/infoIitem.dart';
+import 'general_info_widget.dart';
 
 class VitaeTab extends StatefulWidget {
   const VitaeTab({super.key});
@@ -136,62 +137,9 @@ class _VitaeTab extends State<VitaeTab> {
               fontWeight: FontWeight.bold,
             ),
           ),
-          _buildGeneralInformation(),
+          GeneralInfo(generalList: generalList),
         ],
       ),
-    );
-  }
-
-  Widget _buildGeneralInformation() {
-    return ListView.builder(
-      shrinkWrap: true,
-      itemCount: generalList.length,
-      physics: const NeverScrollableScrollPhysics(),
-      itemBuilder: (context, index) {
-        return Container(
-          padding: const EdgeInsets.all(12),
-          decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(12),
-          ),
-          child: Row(
-            children: [
-              Container(
-                width: 55,
-                height: 55,
-                decoration: BoxDecoration(
-                  color: generalList[index].color.withValues(alpha: 0.15),
-                  borderRadius: BorderRadius.circular(12),
-                ),
-                child: Icon(
-                  generalList[index].icon,
-                  color: generalList[index].color,
-                  size: 26,
-                ),
-              ),
-              const SizedBox(width: 12),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    generalList[index].title,
-                    style: const TextStyle(
-                      fontSize: 13,
-                      color: Colors.grey,
-                      fontWeight: FontWeight.w400,
-                    ),
-                  ),
-                  const SizedBox(height: 4),
-                  Text(
-                    generalList[index].information,
-                    style: const TextStyle(fontSize: 15, color: Colors.black),
-                  ),
-                ],
-              ),
-            ],
-          ),
-        );
-      },
     );
   }
 

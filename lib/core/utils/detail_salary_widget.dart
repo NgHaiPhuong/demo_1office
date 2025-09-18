@@ -1,4 +1,5 @@
 
+import 'package:demo_1office/features/presentation/payroll/tab/salary_bottomsheet.dart';
 import 'package:flutter/material.dart';
 
 class DetailSalaryWidget extends StatelessWidget {
@@ -15,56 +16,61 @@ class DetailSalaryWidget extends StatelessWidget {
       color: Colors.white,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: [_buildSalaryTotal(), _buildListSalary()],
+        children: [_buildSalaryTotal(), _buildListSalary(context)],
       ),
     );
   }
 
-  Widget _buildListSalary() {
+  Widget _buildListSalary(BuildContext context) {
     return ListView.builder(
       shrinkWrap: true,
       itemCount: salaryByMonth.length,
       physics: const NeverScrollableScrollPhysics(),
       itemBuilder: (context, index) {
-        return _buildItemSalary(index);
+        return _buildItemSalary(context, index);
       },
     );
   }
 
-  Widget _buildItemSalary(int index) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 16),
-      child: Column(
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                "Tháng ${index + 1}",
-                style: const TextStyle(fontSize: 16),
-              ),
-              Container(
-                width: 43,
-                height: 43,
-                decoration: BoxDecoration(
-                  color: Colors.green.withValues(alpha: 0.08),
-                  borderRadius: BorderRadius.circular(8),
+  Widget _buildItemSalary(BuildContext context, int index) {
+    return InkWell(
+      onTap: () {
+        showSalaryBottomSheet(context, index + 1);
+      },
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 16),
+        child: Column(
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  "Tháng ${index + 1}",
+                  style: const TextStyle(fontSize: 16),
                 ),
-                child: Center(
-                  child: Text(
-                    ((index + 1) == DateTime.now().month) ? "-" : "${salaryByMonth[index]}",
-                    style: const TextStyle(
-                      color: Colors.green,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 16,
+                Container(
+                  width: 43,
+                  height: 43,
+                  decoration: BoxDecoration(
+                    color: Colors.green.withValues(alpha: 0.08),
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  child: Center(
+                    child: Text(
+                      ((index + 1) == DateTime.now().month) ? "-" : "${salaryByMonth[index]}",
+                      style: const TextStyle(
+                        color: Colors.green,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 16,
+                      ),
                     ),
                   ),
                 ),
-              ),
-            ],
-          ),
-          Divider(color: Colors.grey.shade200)
-        ],
+              ],
+            ),
+            Divider(color: Colors.grey.shade200)
+          ],
+        ),
       ),
     );
   }

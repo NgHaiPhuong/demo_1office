@@ -38,6 +38,7 @@ void showCategoryPersonnelBottomSheet(BuildContext context) {
                 icon: Icons.person_pin_outlined,
                 text: 'Bảng lương',
                 onTap: () {
+                  Navigator.pop(context);
                   Navigator.of(context).push(
                     MaterialPageRoute(
                       builder: (context) => PersonnelRecordsPage(),

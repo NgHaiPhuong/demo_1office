@@ -17,14 +17,15 @@ import '../../features/data/models/workprocess_item.dart';
 class LoadData {
 
   List<SalaryData> dataSalary = [
-    SalaryData('Tháng 1', 1.2),
+    SalaryData('Tháng 1', 5000000),
     SalaryData('Tháng 2', 0),
     SalaryData('Tháng 3', 0),
-    SalaryData('Tháng 4', 5.4),
+    SalaryData('Tháng 4', 14500000),
     SalaryData('Tháng 5', 0),
-    SalaryData('Tháng 6', 0),
+    SalaryData('Tháng 6', 8000000),
     SalaryData('Tháng 7', 0),
-    SalaryData('Tháng 8', 10.2),
+    SalaryData('Tháng 8', 15200000),
+    SalaryData('Tháng 9', 0),
   ];
 
   List<ApplicationItem> applicationList = [

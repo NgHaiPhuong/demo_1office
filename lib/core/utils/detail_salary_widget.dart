@@ -1,13 +1,16 @@
 
+import 'package:demo_1office/core/utils/utils.dart';
 import 'package:demo_1office/features/presentation/payroll/tab/salary_bottomsheet.dart';
 import 'package:flutter/material.dart';
 
+import '../../features/data/models/salary_data.dart';
+
 class DetailSalaryWidget extends StatelessWidget {
-  final List<int> salaryByMonth;
+  final List<SalaryData> dataSalary;
 
   const DetailSalaryWidget({
     super.key,
-    required this.salaryByMonth,
+    required this.dataSalary,
   });
 
   @override
@@ -24,7 +27,7 @@ class DetailSalaryWidget extends StatelessWidget {
   Widget _buildListSalary(BuildContext context) {
     return ListView.builder(
       shrinkWrap: true,
-      itemCount: salaryByMonth.length,
+      itemCount: dataSalary.length,
       physics: const NeverScrollableScrollPhysics(),
       itemBuilder: (context, index) {
         return _buildItemSalary(context, index);
@@ -35,7 +38,7 @@ class DetailSalaryWidget extends StatelessWidget {
   Widget _buildItemSalary(BuildContext context, int index) {
     return InkWell(
       onTap: () {
-        showSalaryBottomSheet(context, index + 1);
+        showSalaryBottomSheet(context, dataSalary[index]);
       },
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 16),
@@ -45,19 +48,19 @@ class DetailSalaryWidget extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  "Tháng ${index + 1}",
+                  dataSalary[index].month,
                   style: const TextStyle(fontSize: 16),
                 ),
                 Container(
-                  width: 43,
                   height: 43,
+                  padding: const EdgeInsets.symmetric(horizontal: 12),
                   decoration: BoxDecoration(
                     color: Colors.green.withValues(alpha: 0.08),
                     borderRadius: BorderRadius.circular(8),
                   ),
                   child: Center(
                     child: Text(
-                      ((index + 1) == DateTime.now().month) ? "-" : "${salaryByMonth[index]}",
+                      ((index + 1) == DateTime.now().month) ? "-" : Utils().formatMoney(dataSalary[index].salary),
                       style: const TextStyle(
                         color: Colors.green,
                         fontWeight: FontWeight.bold,

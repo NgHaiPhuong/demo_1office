@@ -1,4 +1,6 @@
 
+import 'package:intl/intl.dart';
+
 class Utils{
 
   bool isValidVNMobile(String input) {
@@ -12,5 +14,19 @@ class Utils{
       r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",
     );
     return emailRegex.hasMatch(email);
+  }
+
+  String formatMoneyWithVND(double value) {
+    final formatter = NumberFormat("#,###", "vi_VN");
+    return "${formatter.format(value)} ₫";
+  }
+
+  String formatMoney(double value) {
+    final formatter = NumberFormat("#,###", "vi_VN");
+    return formatter.format(value);
+  }
+
+  double convertToMillion(double value) {
+    return (value / 1000000);
   }
 }

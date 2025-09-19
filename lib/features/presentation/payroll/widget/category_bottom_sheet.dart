@@ -37,6 +37,7 @@ void showCategoryPayrollBottomSheet(BuildContext context) {
                 icon: Icons.person_pin_outlined,
                 text: 'Hồ sơ nhân sự',
                 onTap: () {
+                  Navigator.pop(context);
                   Navigator.of(context).push(
                     MaterialPageRoute(
                       builder: (context) => PersonnelRecordsPage(),

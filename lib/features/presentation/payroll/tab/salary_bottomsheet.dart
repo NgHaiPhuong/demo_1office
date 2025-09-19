@@ -1,11 +1,16 @@
+import 'package:demo_1office/core/utils/utils.dart';
+import 'package:demo_1office/features/data/models/salary_data.dart';
+import 'package:demo_1office/features/presentation/payroll/tab/salary_tab.dart';
 import 'package:flutter/material.dart';
 
-import '../../personnel_records/widget/salary_tab.dart';
+import 'exchange_tab.dart';
 
-void showSalaryBottomSheet(BuildContext context, int month) {
+void showSalaryBottomSheet(BuildContext context, SalaryData salaryData) {
+
   showModalBottomSheet(
     context: context,
     isScrollControlled: true,
+    enableDrag: false,
     backgroundColor: Colors.transparent,
     builder: (context) {
       return DefaultTabController(
@@ -25,10 +30,10 @@ void showSalaryBottomSheet(BuildContext context, int month) {
             scrollDirection: Axis.vertical,
             child: Column(
               children: [
-                _buildHeader(month),
+                _buildHeader(salaryData.month),
                 Divider(color: Colors.grey.shade200),
                 SizedBox(height: 12),
-                _buildSalaryTotal(),
+                _buildSalaryTotal(Utils().formatMoney(salaryData.salary)),
                 SizedBox(height: 16),
                 Center(
                   child: Text(
@@ -38,8 +43,11 @@ void showSalaryBottomSheet(BuildContext context, int month) {
                 ),
                 SizedBox(height: 16),
                 _buildTabBar(),
-                Expanded(
-                  child: TabBarView(children: [SalaryTab(), SalaryTab()    ]),
+                SizedBox(
+                  height: MediaQuery.of(context).size.height * 0.3,
+                  child: TabBarView(
+                    children: [WorkingSalaryTab(), ExchangeTab()],
+                  ),
                 ),
               ],
             ),
@@ -70,7 +78,7 @@ Widget _buildTabBar() {
   );
 }
 
-Widget _buildSalaryTotal() {
+Widget _buildSalaryTotal(String salary) {
   return Container(
     padding: const EdgeInsets.all(20),
     margin: const EdgeInsets.symmetric(vertical: 5),
@@ -81,17 +89,17 @@ Widget _buildSalaryTotal() {
     child: Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        const Column(
+        Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
+            const Text(
               "Tổng lương thực nhận",
-              style: TextStyle(fontSize: 14, color: Colors.black),
+              style: TextStyle(fontSize: 16, color: Colors.black),
             ),
-            SizedBox(height: 5),
+            const SizedBox(height: 5),
             Text(
-              "0",
-              style: TextStyle(
+              salary,
+              style: const TextStyle(
                 fontSize: 32,
                 color: Colors.black,
                 fontWeight: FontWeight.bold,
@@ -110,11 +118,11 @@ Widget _buildSalaryTotal() {
   );
 }
 
-Widget _buildHeader(int month) {
+Widget _buildHeader(String month) {
   return Padding(
     padding: const EdgeInsets.all(12),
     child: Text(
-      "Phiếu lương tháng $month/2025",
+      "Phiếu lương $month/2025",
       style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
     ),
   );

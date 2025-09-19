@@ -1,9 +1,11 @@
 
+import 'package:demo_1office/core/utils/chart_widget.dart';
 import 'package:flutter/material.dart';
-
+import '../../../../core/utils/data.dart';
 import '../../../../core/utils/detail_salary_widget.dart';
 import '../../../../core/utils/header.dart';
 import '../../../../core/utils/history_widget.dart';
+import '../../../data/models/salary_data.dart';
 
 class SalaryTab extends StatefulWidget {
   const SalaryTab({super.key});
@@ -13,15 +15,27 @@ class SalaryTab extends StatefulWidget {
 }
 
 class _SalaryTab extends State<SalaryTab> {
-  final List<int> salaryByMonth = List.generate(DateTime.now().month, (index) => 0,
-  );
+  final List<SalaryData> dataSalary = LoadData().dataSalary;
   List<bool> isExpandedList = [true, true];
+  bool isShowChart = false;
   OverlayEntry? _overlayEntry;
   final GlobalKey _iconKey = GlobalKey();
+
+  @override
+  void initState() {
+    super.initState();
+    dataSalary.removeLast();
+  }
 
   void expandDetailSalary(int index) {
     setState(() {
       isExpandedList[index] = !isExpandedList[index];
+    });
+  }
+
+  void showChart() {
+    setState(() {
+      isShowChart = !isShowChart;
     });
   }
 
@@ -32,9 +46,14 @@ class _SalaryTab extends State<SalaryTab> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          HeaderTitle(title: "Lương thực nhận năm 2025", isExpand: isExpandedList[0], onTap: () {
-            expandDetailSalary(0);
-          }, isMoreIcon: true, icon: Icons.bar_chart),
+          HeaderTitle(
+            title: "  Lương thực nhận năm 2025",
+            isExpand: isExpandedList[0],
+            isMoreIcon: true,
+            icon: isShowChart? Icons.list_alt_outlined : Icons.bar_chart,
+            onTap: () { expandDetailSalary(0); },
+            onTapMoreIcon: showChart,
+          ),
           _buildContentSalary(),
           SizedBox(height: 18),
           HistorySalaryWidget(
@@ -53,10 +72,15 @@ class _SalaryTab extends State<SalaryTab> {
 
   Widget _buildContentSalary() {
     return Visibility(
-        visible: isExpandedList[0],
-        maintainSize: false,
-        maintainAnimation: false,
-        child: DetailSalaryWidget(salaryByMonth: salaryByMonth)
+      visible: isExpandedList[0],
+      maintainSize: false,
+      maintainAnimation: false,
+      child: AnimatedSwitcher(
+        duration: Duration(milliseconds: 300),
+        child: isShowChart
+            ? ChartWidget(dataSalary: dataSalary)
+            : DetailSalaryWidget(dataSalary: dataSalary),
+      ),
     );
   }
 }

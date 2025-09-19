@@ -1,3 +1,5 @@
+import 'package:demo_1office/features/presentation/personnel_records/widget/general_info_widget.dart';
+import 'package:demo_1office/features/presentation/reward/page/reward_page.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../core/utils/data.dart';
@@ -18,7 +20,7 @@ class _PersonnelTab extends State<PersonnelTab> {
   final healthList = LoadData().healthList;
   final workList = LoadData().workList;
 
-  List<bool> isExpandedList = [true, true, true, true, true, true, true, true];
+  List<bool> isExpandedList = [true, true, true, true, true, true, true, true, true];
 
   void expandDetailSalary(int index) {
     setState(() {
@@ -47,9 +49,119 @@ class _PersonnelTab extends State<PersonnelTab> {
           SizedBox(height: 18),
           _buildWorkEfficiency(),
           SizedBox(height: 18),
+          _buildFinance(),
+          SizedBox(height: 18),
           _buildReward(),
           SizedBox(height: 18),
           _buildAsset(),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildFinance() {
+    return Container(
+      color: Colors.white,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          HeaderTitle(
+            title: "Tài chính",
+            isExpand: isExpandedList[8],
+            onTap: () {
+              expandDetailSalary(8);
+            },
+          ),
+          _buildContentFinance()
+        ],
+      ),
+    );
+  }
+
+  Widget _buildContentFinance() {
+    return Visibility(
+      visible: isExpandedList[8],
+      maintainSize: false,
+      maintainAnimation: false,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          _buildFinanceCard(),
+          _buildItemFinance()
+        ],
+      ),
+    );
+  }
+
+  Widget _buildItemFinance() {
+    return Column(
+      children: [
+        _buildDebtItem(
+          title: "Số lượng/ngày",
+          amount: "500,000đ",
+          icon: Icons.attach_money_outlined,
+          iconColor: Colors.green,
+        ),
+        Padding(
+          padding: const EdgeInsets.only(left: 80, right: 16),
+          child: Divider(),
+        ),
+        _buildDebtItem(
+          title: "Số lượng/tháng",
+          icon: Icons.wallet_outlined,
+          amount: "100,000,000đ",
+          iconColor: Colors.deepPurple,
+        ),
+        Padding(
+          padding: const EdgeInsets.only(left: 80, right: 16),
+          child: Divider(),
+        ),
+        _buildDebtItem(
+          title: "Tổng doanh số",
+          icon: Icons.money,
+          amount: "0đ",
+          iconColor: Colors.blueAccent,
+        ),
+        Padding(
+          padding: const EdgeInsets.only(left: 80, right: 16),
+          child: Divider(),
+        ),
+        _buildDebtItem(
+          title: "Doanh số/lương (ROI)",
+          icon: Icons.pie_chart_outline_outlined,
+          amount: "500,000đ",
+          iconColor: Colors.red,
+        )
+      ],
+    );
+  }
+
+  Widget _buildFinanceCard() {
+    return Container(
+      padding: const EdgeInsets.all(24),
+      margin: const EdgeInsets.all(16),
+      decoration: BoxDecoration(
+        color: Colors.orangeAccent.withValues(alpha: 0.2),
+        borderRadius: BorderRadius.circular(12),
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          const Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                "Tổng lương đã nhận của bạn",
+                style: TextStyle(fontSize: 14, color: Colors.black54),
+              ),
+              SizedBox(height: 4),
+              Text(
+                "100,000,000đ",
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              ),
+            ],
+          ),
+          Image.asset("assets/images/salary.png", height: 80),
         ],
       ),
     );
@@ -62,10 +174,14 @@ class _PersonnelTab extends State<PersonnelTab> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          HeaderTitle(title: "Tài sản", isExpand: isExpandedList[7], onTap: () {
-            expandDetailSalary(7);
-          }),
-          _buildAssetCard()
+          HeaderTitle(
+            title: "Tài sản",
+            isExpand: isExpandedList[7],
+            onTap: () {
+              expandDetailSalary(7);
+            },
+          ),
+          _buildAssetCard(),
         ],
       ),
     );
@@ -89,8 +205,11 @@ class _PersonnelTab extends State<PersonnelTab> {
           children: [
             Row(
               children: [
-                Icon(Icons.account_balance_wallet,
-                    color: Colors.green, size: 32),
+                Icon(
+                  Icons.account_balance_wallet,
+                  color: Colors.lightGreen,
+                  size: 32,
+                ),
                 const SizedBox(width: 16),
                 const Text(
                   "Tổng giá trị",
@@ -109,7 +228,7 @@ class _PersonnelTab extends State<PersonnelTab> {
               style: TextStyle(
                 fontSize: 24,
                 fontWeight: FontWeight.bold,
-                color: Colors.green,
+                color: Colors.lightGreen,
               ),
             ),
           ],
@@ -124,9 +243,22 @@ class _PersonnelTab extends State<PersonnelTab> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          HeaderTitle(title: "Khen thưởng, kỉ luật", isExpand: isExpandedList[6], onTap: () {
-            expandDetailSalary(6);
-          }, isMoreIcon: true, icon: Icons.open_in_new),
+          HeaderTitle(
+            title: "Khen thưởng, kỉ luật",
+            isExpand: isExpandedList[6],
+            onTap: () {
+              expandDetailSalary(6);
+            },
+            isMoreIcon: true,
+            icon: Icons.open_in_new,
+            onTapMoreIcon: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => RewardPage(),
+                ),
+              );
+            },
+          ),
           _buildRewardCard(),
         ],
       ),
@@ -141,9 +273,8 @@ class _PersonnelTab extends State<PersonnelTab> {
       child: Column(
         children: [
           _buildCard(
-            color: Colors.green.shade50,
             icon: Icons.emoji_events_outlined,
-            iconColor: Colors.green,
+            iconColor: Colors.lightGreen,
             title: "Quyết định",
             count: "0 LẦN",
           ),
@@ -151,7 +282,6 @@ class _PersonnelTab extends State<PersonnelTab> {
           const SizedBox(height: 12),
 
           _buildCard(
-            color: Colors.red.shade50,
             icon: Icons.thumb_down_alt_outlined,
             iconColor: Colors.red,
             title: "Kỷ luật",
@@ -165,7 +295,6 @@ class _PersonnelTab extends State<PersonnelTab> {
   }
 
   Widget _buildCard({
-    required Color color,
     required IconData icon,
     required Color iconColor,
     required String title,
@@ -187,7 +316,7 @@ class _PersonnelTab extends State<PersonnelTab> {
             height: 55,
             padding: const EdgeInsets.all(12),
             decoration: BoxDecoration(
-              color: color,
+              color: iconColor.withValues(alpha: 0.15),
               borderRadius: BorderRadius.circular(12),
             ),
             child: Icon(icon, color: iconColor),
@@ -200,10 +329,11 @@ class _PersonnelTab extends State<PersonnelTab> {
             children: [
               Text(
                 title,
-                style:
-                const TextStyle(color: Colors.grey,
-                    fontSize: 14,
-                    fontWeight: FontWeight.w500),
+                style: const TextStyle(
+                  color: Colors.grey,
+                  fontSize: 14,
+                  fontWeight: FontWeight.w500,
+                ),
               ),
               const SizedBox(height: 4),
               Text(
@@ -226,10 +356,14 @@ class _PersonnelTab extends State<PersonnelTab> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          HeaderTitle(title: "Hiệu quả công việc", isExpand: isExpandedList[5], onTap: () {
-            expandDetailSalary(5);
-          }),
-          _buildHideAndShow()
+          HeaderTitle(
+            title: "Hiệu quả công việc",
+            isExpand: isExpandedList[5],
+            onTap: () {
+              expandDetailSalary(5);
+            },
+          ),
+          _buildHideAndShow(),
         ],
       ),
     );
@@ -237,16 +371,13 @@ class _PersonnelTab extends State<PersonnelTab> {
 
   Widget _buildHideAndShow() {
     return Visibility(
-        visible: isExpandedList[5],
-        maintainSize: false,
-        maintainAnimation: false,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            _buildTotalWork(),
-            _buildProgressWork()
-          ],
-        )
+      visible: isExpandedList[5],
+      maintainSize: false,
+      maintainAnimation: false,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [_buildTotalWork(), _buildProgressWork()],
+      ),
     );
   }
 
@@ -271,17 +402,11 @@ class _PersonnelTab extends State<PersonnelTab> {
               SizedBox(height: 4),
               Text(
                 "0 VIỆC",
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                ),
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
             ],
           ),
-          Image.asset(
-            "assets/images/salary.png",
-            height: 80,
-          ),
+          Image.asset("assets/images/salary.png", height: 80),
         ],
       ),
     );
@@ -293,7 +418,7 @@ class _PersonnelTab extends State<PersonnelTab> {
       child: Column(
         children: [
           _buildProgressItem(
-            color: Colors.green,
+            color: Colors.lightGreen,
             icon: Icons.favorite_border,
             label: "Hoàn thành trước hạn",
             value: 0.0,
@@ -316,7 +441,7 @@ class _PersonnelTab extends State<PersonnelTab> {
             label: "Chưa hoàn thành",
             value: 0.0,
           ),
-          SizedBox(height: 8)
+          SizedBox(height: 8),
         ],
       ),
     );
@@ -348,9 +473,14 @@ class _PersonnelTab extends State<PersonnelTab> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(label, style: const TextStyle(fontSize: 16,
+                Text(
+                  label,
+                  style: const TextStyle(
+                    fontSize: 16,
                     color: Colors.grey,
-                    fontWeight: FontWeight.w500)),
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
                 const SizedBox(height: 8),
                 Stack(
                   alignment: Alignment.centerLeft,
@@ -379,7 +509,7 @@ class _PersonnelTab extends State<PersonnelTab> {
                 ),
               ],
             ),
-          )
+          ),
         ],
       ),
     );
@@ -391,9 +521,13 @@ class _PersonnelTab extends State<PersonnelTab> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          HeaderTitle(title: "Ý thức làm việc", isExpand: isExpandedList[4], onTap: () {
-            expandDetailSalary(4);
-          }),
+          HeaderTitle(
+            title: "Ý thức làm việc",
+            isExpand: isExpandedList[4],
+            onTap: () {
+              expandDetailSalary(4);
+            },
+          ),
           _buildWorkConsciousTable(),
         ],
       ),
@@ -419,23 +553,35 @@ class _PersonnelTab extends State<PersonnelTab> {
             children: [
               Padding(
                 padding: EdgeInsets.all(16.0),
-                child: Text("Chỉ số",
-                    style: TextStyle(
-                        color: Colors.grey, fontWeight: FontWeight.bold)),
+                child: Text(
+                  "Chỉ số",
+                  style: TextStyle(
+                    color: Colors.grey,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
               ),
               Padding(
                 padding: EdgeInsets.all(16.0),
-                child: Text("Tổng số",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                        color: Colors.grey, fontWeight: FontWeight.bold)),
+                child: Text(
+                  "Tổng số",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    color: Colors.grey,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
               ),
               Padding(
                 padding: EdgeInsets.all(16.0),
-                child: Text("TB cá nhân/Tháng",
-                    textAlign: TextAlign.right,
-                    style: TextStyle(
-                        color: Colors.grey, fontWeight: FontWeight.bold)),
+                child: Text(
+                  "TB cá nhân/Tháng",
+                  textAlign: TextAlign.right,
+                  style: TextStyle(
+                    color: Colors.grey,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
               ),
             ],
           ),
@@ -449,24 +595,31 @@ class _PersonnelTab extends State<PersonnelTab> {
                 Container(
                   padding: const EdgeInsets.all(8.0),
                   margin: const EdgeInsets.symmetric(
-                      horizontal: 32, vertical: 12),
+                    horizontal: 32,
+                    vertical: 12,
+                  ),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(8.0),
-                    color: Colors.green.withValues(alpha: 0.1),
+                    color: Colors.lightGreen.withValues(alpha: 0.1),
                   ),
-                  child: Text(item.total, textAlign: TextAlign.center,
-                      style: const TextStyle(color: Colors.green)),
+                  child: Text(
+                    item.total,
+                    textAlign: TextAlign.center,
+                    style: const TextStyle(color: Colors.lightGreen),
+                  ),
                 ),
                 Container(
                   padding: const EdgeInsets.all(8.0),
                   margin: const EdgeInsets.fromLTRB(52, 12, 8, 12),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(8.0),
-                    color: Colors.green.withValues(alpha: 0.1),
+                    color: Colors.lightGreen.withValues(alpha: 0.1),
                   ),
-                  child: Text(item.average,
-                      textAlign: TextAlign.right,
-                      style: const TextStyle(color: Colors.green)),
+                  child: Text(
+                    item.average,
+                    textAlign: TextAlign.right,
+                    style: const TextStyle(color: Colors.lightGreen),
+                  ),
                 ),
               ],
             );
@@ -482,9 +635,13 @@ class _PersonnelTab extends State<PersonnelTab> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          HeaderTitle(title: "Sức khỏe", isExpand: isExpandedList[3], onTap: () {
-            expandDetailSalary(3);
-          }),
+          HeaderTitle(
+            title: "Sức khỏe",
+            isExpand: isExpandedList[3],
+            onTap: () {
+              expandDetailSalary(3);
+            },
+          ),
           _buildHealthyTable(),
         ],
       ),
@@ -510,23 +667,35 @@ class _PersonnelTab extends State<PersonnelTab> {
             children: [
               Padding(
                 padding: EdgeInsets.all(16.0),
-                child: Text("Thông tin",
-                    style: TextStyle(
-                        color: Colors.grey, fontWeight: FontWeight.bold)),
+                child: Text(
+                  "Thông tin",
+                  style: TextStyle(
+                    color: Colors.grey,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
               ),
               Padding(
                 padding: EdgeInsets.all(16.0),
-                child: Text("Chỉ số",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                        color: Colors.grey, fontWeight: FontWeight.bold)),
+                child: Text(
+                  "Chỉ số",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    color: Colors.grey,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
               ),
               Padding(
                 padding: EdgeInsets.all(16.0),
-                child: Text("Unit",
-                    textAlign: TextAlign.right,
-                    style: TextStyle(
-                        color: Colors.grey, fontWeight: FontWeight.bold)),
+                child: Text(
+                  "Unit",
+                  textAlign: TextAlign.right,
+                  style: TextStyle(
+                    color: Colors.grey,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
               ),
             ],
           ),
@@ -539,15 +708,19 @@ class _PersonnelTab extends State<PersonnelTab> {
                 ),
                 Padding(
                   padding: const EdgeInsets.all(16.0),
-                  child: Text(item.value,
-                      textAlign: TextAlign.center,
-                      style: const TextStyle(color: Colors.black54)),
+                  child: Text(
+                    item.value,
+                    textAlign: TextAlign.center,
+                    style: const TextStyle(color: Colors.black54),
+                  ),
                 ),
                 Padding(
                   padding: const EdgeInsets.all(16.0),
-                  child: Text(item.unit,
-                      textAlign: TextAlign.right,
-                      style: const TextStyle(color: Colors.black54)),
+                  child: Text(
+                    item.unit,
+                    textAlign: TextAlign.right,
+                    style: const TextStyle(color: Colors.black54),
+                  ),
                 ),
               ],
             );
@@ -563,10 +736,14 @@ class _PersonnelTab extends State<PersonnelTab> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          HeaderTitle(title: "Công nợ", isExpand: isExpandedList[2], onTap: () {
-            expandDetailSalary(2);
-          }),
-          _buildTotalDebt()
+          HeaderTitle(
+            title: "Công nợ",
+            isExpand: isExpandedList[2],
+            onTap: () {
+              expandDetailSalary(2);
+            },
+          ),
+          _buildTotalDebt(),
         ],
       ),
     );
@@ -582,6 +759,7 @@ class _PersonnelTab extends State<PersonnelTab> {
           _buildHeaderDebt(),
           const SizedBox(height: 20),
           _buildDebtItem(
+            icon: Icons.attach_money,
             iconColor: Colors.red,
             title: "Công ty nợ",
             amount: "0 đ",
@@ -591,6 +769,7 @@ class _PersonnelTab extends State<PersonnelTab> {
             child: Divider(),
           ),
           _buildDebtItem(
+            icon: Icons.attach_money,
             iconColor: Colors.blue,
             title: "Bạn nợ",
             amount: "0 đ",
@@ -602,12 +781,13 @@ class _PersonnelTab extends State<PersonnelTab> {
   }
 
   Widget _buildDebtItem({
+    required IconData icon,
     required Color iconColor,
     required String title,
     required String amount,
   }) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 5),
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -620,7 +800,7 @@ class _PersonnelTab extends State<PersonnelTab> {
                   color: iconColor.withValues(alpha: 0.1),
                   borderRadius: BorderRadius.circular(12),
                 ),
-                child: Icon(Icons.attach_money, color: iconColor, size: 28),
+                child: Icon(icon, color: iconColor, size: 28),
               ),
               const SizedBox(width: 12),
               Text(
@@ -631,7 +811,7 @@ class _PersonnelTab extends State<PersonnelTab> {
           ),
           Text(
             amount,
-            style: const TextStyle(fontSize: 16, color: Colors.grey),
+            style: const TextStyle(fontSize: 16, color: Colors.black),
           ),
         ],
       ),
@@ -679,9 +859,13 @@ class _PersonnelTab extends State<PersonnelTab> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          HeaderTitle(title: "Tiến trình tiếp nhận hồ sơ", isExpand: isExpandedList[1], onTap: () {
-            expandDetailSalary(1);
-          }),
+          HeaderTitle(
+            title: "Tiến trình tiếp nhận hồ sơ",
+            isExpand: isExpandedList[1],
+            onTap: () {
+              expandDetailSalary(1);
+            },
+          ),
           _buildListProfile(),
         ],
       ),
@@ -708,9 +892,10 @@ class _PersonnelTab extends State<PersonnelTab> {
   Widget _buildItemList(int index) {
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 8),
+      padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(8),
-        border: Border.all(color: Colors.grey, width: 1),
+        border: Border.all(color: Colors.grey.shade300, width: 1),
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
@@ -732,9 +917,13 @@ class _PersonnelTab extends State<PersonnelTab> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          HeaderTitle(title: "Quy trình làm việc", isExpand: isExpandedList[0], onTap: () {
-            expandDetailSalary(0);
-          }),
+          HeaderTitle(
+            title: "Quy trình làm việc",
+            isExpand: isExpandedList[0],
+            onTap: () {
+              expandDetailSalary(0);
+            },
+          ),
           _buildListProcess(),
         ],
       ),
@@ -778,62 +967,9 @@ class _PersonnelTab extends State<PersonnelTab> {
               fontWeight: FontWeight.bold,
             ),
           ),
-          _buildGeneralInformation(),
+          GeneralInfo(generalList: generalList),
         ],
       ),
-    );
-  }
-
-  Widget _buildGeneralInformation() {
-    return ListView.builder(
-      shrinkWrap: true,
-      itemCount: generalList.length,
-      physics: const NeverScrollableScrollPhysics(),
-      itemBuilder: (context, index) {
-        return Container(
-          padding: const EdgeInsets.all(12),
-          decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(12),
-          ),
-          child: Row(
-            children: [
-              Container(
-                width: 55,
-                height: 55,
-                decoration: BoxDecoration(
-                  color: generalList[index].color.withValues(alpha: 0.15),
-                  borderRadius: BorderRadius.circular(12),
-                ),
-                child: Icon(
-                  generalList[index].icon,
-                  color: generalList[index].color,
-                  size: 26,
-                ),
-              ),
-              const SizedBox(width: 12),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    generalList[index].title,
-                    style: const TextStyle(
-                      fontSize: 13,
-                      color: Colors.grey,
-                      fontWeight: FontWeight.w400,
-                    ),
-                  ),
-                  const SizedBox(height: 4),
-                  Text(
-                    generalList[index].information,
-                    style: const TextStyle(fontSize: 15, color: Colors.black),
-                  ),
-                ],
-              ),
-            ],
-          ),
-        );
-      },
     );
   }
 
@@ -886,14 +1022,14 @@ class _PersonnelTab extends State<PersonnelTab> {
                       horizontal: 12,
                     ),
                     decoration: BoxDecoration(
-                      color: Colors.green[100],
+                      color: Colors.lightGreen[100],
                       borderRadius: BorderRadius.circular(5.0),
                     ),
                     child: const Text(
                       "Đang làm việc",
                       style: TextStyle(
                         fontSize: 14,
-                        color: Colors.green,
+                        color: Colors.lightGreen,
                         fontWeight: FontWeight.bold,
                       ),
                     ),

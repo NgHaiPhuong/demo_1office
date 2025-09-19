@@ -5,6 +5,7 @@ import '../../notify/page/notifty_page.dart';
 import '../../payroll/page/payroll_page.dart';
 import '../../timesheet/page/timesheet_page.dart';
 import '../../timesheet/widget/category_bottomsheet.dart';
+import '../widget/filter_bottomsheet.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -672,7 +673,11 @@ class _HomePageState extends State<HomePage> {
           style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
         ),
         Spacer(),
-        if (hasFilter) const Icon(Icons.filter_alt_outlined, color: Colors.grey, size: 30),
+        if (hasFilter) InkWell(
+          onTap: (){
+            showFilterBottomSheet(context);
+          },
+            child: Icon(Icons.filter_alt_outlined, color: Colors.grey, size: 30)),
         InkWell(
           onTap: onToggle,
           child: Icon(isVisible ? Icons.remove : Icons.add, color: Colors.grey, size: 30),

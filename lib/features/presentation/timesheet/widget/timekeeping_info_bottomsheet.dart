@@ -171,7 +171,9 @@ Widget _buildShiftAdministration(){
   return Column(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: [
-      Text('Ca làm việc HC - Ca hành chính'),
+      SizedBox(height: 8),
+      Text('Ca làm việc HC - Ca hành chính',style: TextStyle(fontSize: 16),),
+      SizedBox(height: 8),
       Container(
         padding: const EdgeInsets.all(16),
         decoration: BoxDecoration(
@@ -222,7 +224,9 @@ Widget _buildDayTimekeeping(){
   return Column(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: [
-      Text('Chốt công trong ngày'),
+      SizedBox(height: 8,),
+      Text('Chốt công trong ngày',style: TextStyle(fontSize: 16),),
+      SizedBox(height: 8,),
       Container(
         padding: const EdgeInsets.all(16),
         decoration: BoxDecoration(

@@ -12,6 +12,9 @@ import 'features/data/repositories/user_repository_impl.dart';
 import 'features/domain/usecases/log_in.dart';
 import 'package:calendar_view/calendar_view.dart';
 
+import 'package:flutter_quill/flutter_quill.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
 
@@ -53,7 +56,13 @@ class MyApp extends StatelessWidget {
         scaffoldBackgroundColor: Colors.white,
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.white),
       ),
-      home: const LogInPage(),
+      home: LogInPage(),
+      localizationsDelegates: [
+        GlobalMaterialLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        FlutterQuillLocalizations.delegate,
+      ],
     );
   }
 }

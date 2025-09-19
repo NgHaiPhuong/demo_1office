@@ -30,6 +30,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_localizations:
+    sdk: flutter
   shared_preferences: ^2.2.1
   dio: ^5.3.3
   flutter_bloc: ^8.1.6
@@ -41,6 +43,7 @@ dependencies:
   calendar_view: ^1.4.0
   dotted_border: ^2.1.0
   syncfusion_flutter_charts: ^30.2.4
+  flutter_quill: ^11.4.2
   url_launcher: ^6.2.6
 
   # The following adds the Cupertino Icons font to your application.

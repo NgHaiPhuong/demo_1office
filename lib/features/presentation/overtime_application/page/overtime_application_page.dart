@@ -2,6 +2,7 @@ import 'package:demo_1office/features/presentation/overtime_application/page/req
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 
+import '../../extra_work_application/page/reason_page.dart';
 import '../../home/widget/home_header.dart';
 import '../../leave_application/widget/select_calendar_bottomsheet.dart';
 import 'overtime_page.dart';
@@ -175,6 +176,13 @@ class OvertimeApplicationPage extends StatelessWidget {
                     ),
                     suffixIcon: const Icon(Icons.keyboard_arrow_down),
                   ),
+                  onTap: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => ReasonExtraWorkPage(),
+                      ),
+                    );
+                  },
                 ),
               ],
             ),

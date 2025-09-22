@@ -1,6 +1,10 @@
+import 'package:demo_1office/features/presentation/absence_application/page/reason_page.dart';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
+
 import '../../home/widget/home_header.dart';
+import '../../leave_application/widget/select_calendar_bottomsheet.dart';
+import '../../leave_application/widget/select_time_bottomsheet.dart';
 
 class AbsenceApplicationPage extends StatelessWidget {
   const AbsenceApplicationPage({super.key});
@@ -82,7 +86,11 @@ class AbsenceApplicationPage extends StatelessWidget {
                       borderRadius: BorderRadius.circular(5),
                     ),
                     suffixIcon: const Icon(Icons.date_range_outlined),
-                  ),),
+                  ),
+                  onTap: () {
+                    showSelectCalendarBottomSheet(context);
+                  },
+                ),
                 SizedBox(height: 16),
                 Row(
                   children: [
@@ -100,7 +108,7 @@ class AbsenceApplicationPage extends StatelessWidget {
                           suffixIcon: const Icon(Icons.access_time),
                         ),
                         onTap: (){
-                          // showSelectTimeBottomSheet(context);
+                          showSelectTimeBottomSheet(context);
                         },
                       ),
                     ),
@@ -119,7 +127,7 @@ class AbsenceApplicationPage extends StatelessWidget {
                           suffixIcon: const Icon(Icons.access_time),
                         ),
                         onTap: () {
-                          // showSelectCalendarBottomSheet(context);
+                          showSelectTimeBottomSheet(context);
                         },
                       ),
                     ),
@@ -137,7 +145,15 @@ class AbsenceApplicationPage extends StatelessWidget {
                       borderRadius: BorderRadius.circular(5),
                     ),
                     suffixIcon: const Icon(Icons.keyboard_arrow_down),
-                  ),),
+                  ),
+                    onTap: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) => ReasonAbsencePage(),
+                        ),
+                      );
+                    }
+                ),
                 SizedBox(height: 16),
                 Row(
                   children: [
